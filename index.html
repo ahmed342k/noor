@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XR Store</title>
+  <meta name="description" content="متجر XR المتنوع لبيع الإكسسوارات والأجهزة البسيطة مثل مبردات الهاتف والكفرات والسماعات والشواحن.">
+  <meta name="keywords" content="XR, متجر, اكسسوارات, مبرد هاتف, كفر هاتف, سماعات, شواحن">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar" id="siteHeader"></header>
+  <main class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="card hero-main">
+          <div class="badge" id="heroBadge"></div>
+          <h2 id="heroTitle"></h2>
+          <p id="heroText"></p>
+          <div class="row">
+            <button class="btn btn-primary" id="shopBtn"></button>
+            <button class="btn" id="latestBtn"></button>
+          </div>
+        </div>
+        <div class="hero-side">
+          <div class="card p24">
+            <h3 id="bestTitle" class="m0"></h3>
+            <p id="bestText" class="muted mt12"></p>
+            <div class="stats">
+              <div class="stat"><strong>6+</strong><span id="ft1"></span></div>
+              <div class="stat"><strong>2</strong><span id="ft2"></span></div>
+              <div class="stat"><strong>24/7</strong><span id="ft3"></span></div>
+            </div>
+          </div>
+          <div class="card p24 notice">
+            <strong id="seoTitle"></strong>
+            <p id="seoText" class="muted mt8"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="productsSection">
+      <div class="section-head">
+        <div>
+          <h3 id="secTitle"></h3>
+          <p class="muted m0" id="secSub"></p>
+        </div>
+      </div>
+      <div class="toolbar">
+        <input class="field" id="searchInput" type="text">
+        <input class="field" id="minPrice" type="number" min="0">
+        <input class="field" id="minRating" type="number" min="0" max="5" step="0.1">
+        <select class="field" id="sortBy"></select>
+      </div>
+      <div class="categories" id="categories"></div>
+      <div class="products" id="products"></div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>XR</strong>
+        <p class="mt8" id="footerText"></p>
+      </div>
+      <div class="list">
+        <a href="about.html">من نحن</a>
+        <a href="contact.html">اتصل بنا</a>
+        <a href="privacy.html">سياسة الخصوصية</a>
+        <a href="terms.html">الشروط والأحكام</a>
+      </div>
+      <div class="list">
+        <a href="login.html">تسجيل دخول الإدارة</a>
+        <a href="admin.html">لوحة التحكم</a>
+        <a href="cart.html">السلة</a>
+      </div>
+    </div>
+  </footer>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

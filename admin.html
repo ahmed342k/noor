@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XR Admin</title>
+  <meta name="description" content="لوحة تحكم متجر XR لإضافة المنتجات وحذفها وتعديل الأسعار.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar" id="siteHeader"></header>
+  <main class="container mt24">
+    <div class="section-head">
+      <h3 id="dashTitle"></h3>
+      <div class="row">
+        <button class="btn btn-danger" id="logoutBtn"></button>
+      </div>
+    </div>
+    <div class="kpis" id="kpis"></div>
+    <section class="grid-2 mt24">
+      <div class="card p24">
+        <h3 class="m0" id="formTitle"></h3>
+        <form id="productForm" class="list mt16">
+          <input class="field" id="nameAr" required>
+          <input class="field" id="nameKu" required>
+          <select class="field" id="category"></select>
+          <input class="field" id="price" type="number" min="0" step="0.01" required>
+          <input class="field" id="image" type="url" required>
+          <textarea class="textarea field" id="descAr" required></textarea>
+          <textarea class="textarea field" id="descKu" required></textarea>
+          <input class="field" id="featuresAr" required>
+          <input class="field" id="featuresKu" required>
+          <input class="field" id="sizes">
+          <input class="field" id="rating" type="number" min="0" max="5" step="0.1" required>
+          <div class="row">
+            <button class="btn btn-primary" id="saveBtn" type="submit"></button>
+            <button class="btn" id="cancelBtn" type="button"></button>
+          </div>
+        </form>
+      </div>
+      <div id="productsTable"></div>
+    </section>
+  </main>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

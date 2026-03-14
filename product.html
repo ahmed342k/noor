@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XR Product</title>
+  <meta name="description" content="تفاصيل المنتج داخل متجر XR.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar" id="siteHeader"></header>
+  <main class="container mt24">
+    <section class="product-page">
+      <div class="gallery-main"><img id="pImage" src="" alt=""></div>
+      <div class="card p24">
+        <h2 id="pName" class="m0"></h2>
+        <div class="price mt12" id="pPrice"></div>
+        <div class="rating mt12" id="pRating"></div>
+        <p class="muted mt16" id="pDesc"></p>
+        <div class="mt24">
+          <strong id="featuresTitle"></strong>
+          <div class="linkline mt12" id="featuresList"></div>
+        </div>
+        <div class="mt24">
+          <strong id="sizesTitle"></strong>
+          <p class="muted mt8" id="sizesText"></p>
+        </div>
+        <div class="actions mt24">
+          <button class="btn btn-primary" id="addBtn"></button>
+          <a class="btn" href="cart.html">السلة</a>
+        </div>
+      </div>
+    </section>
+    <section class="mt24">
+      <div class="section-head"><h3 id="similarTitle"></h3></div>
+      <div class="similar" id="similar"></div>
+    </section>
+  </main>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/product.js"></script>
+</body>
+</html>
