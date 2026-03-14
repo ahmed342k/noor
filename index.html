@@ -4,897 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>القارئ | استمع إلى القرآن الكريم بأصوات جميلة</title>
-  <meta name="description" content="استمع إلى القرآن الكريم بأصوات القراء مع واجهة أنيقة، بحث سريع، ووضع ليلي ونهاري سلس." />
-  <meta name="keywords" content="القرآن, القارئ, استماع القرآن, سور القرآن, قراء القرآن" />
+  <title>القارئ | استمع إلى القرآن الكريم</title>
+  <meta name="description" content="موقع القارئ للاستماع إلى القرآن الكريم وقراءة السور والبحث في الآيات." />
   <meta name="theme-color" content="#071427" id="themeColorMeta" />
 
   <meta property="og:title" content="القارئ | استمع إلى القرآن الكريم" />
-  <meta property="og:description" content="واجهة أنيقة للاستماع إلى القرآن الكريم." />
+  <meta property="og:description" content="استمع إلى القرآن الكريم مع القراءة والبحث في الآيات." />
   <meta property="og:image" content="share.jpg" />
 
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="stylesheet" href="style.css" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg:#f3f7fd;
-      --bg2:#eaf1fa;
-      --surface:rgba(255,255,255,.88);
-      --surface-2:#ffffff;
-      --text:#10243b;
-      --muted:#73859a;
-      --primary:#3b82f6;
-      --primary2:#64d2ff;
-      --border:rgba(54,95,146,.12);
-      --shadow:0 10px 30px rgba(33,69,120,.10);
-      --shadow-soft:0 6px 18px rgba(33,69,120,.08);
-      --chip:rgba(78,168,255,.10);
-    }
-
-    body.dark{
-      --bg:#03101e;
-      --bg2:#071427;
-      --surface:rgba(7,18,35,.78);
-      --surface-2:#061325;
-      --text:#eef5ff;
-      --muted:#92a6bc;
-      --primary:#5ccdf7;
-      --primary2:#4f99ff;
-      --border:rgba(151,194,255,.10);
-      --shadow:0 14px 34px rgba(0,0,0,.33);
-      --shadow-soft:0 8px 22px rgba(0,0,0,.24);
-      --chip:rgba(92,205,247,.10);
-    }
-
-    *{box-sizing:border-box}
-
-    html{scroll-behavior:smooth}
-
-    body{
-      margin:0;
-      font-family:"Cairo",sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(circle at top right, rgba(99,160,255,.12), transparent 24%),
-        linear-gradient(180deg,var(--bg),var(--bg2));
-      transition:background .35s ease,color .35s ease;
-    }
-
-    button,input{
-      font-family:inherit;
-    }
-
-    .container{
-      width:min(1100px,calc(100% - 20px));
-      margin:auto;
-    }
-
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:50;
-      backdrop-filter:blur(12px);
-      background:rgba(255,255,255,.16);
-      border-bottom:1px solid var(--border);
-    }
-
-    body.dark .topbar{
-      background:rgba(3,10,20,.32);
-    }
-
-    .topbar-inner{
-      min-height:74px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      padding:10px 0;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      text-decoration:none;
-      color:inherit;
-      min-width:0;
-    }
-
-    .brand-logo{
-      width:54px;
-      height:54px;
-      border-radius:16px;
-      background:linear-gradient(135deg,#0f1f39,#0a2f63 55%,#3b82f6 100%);
-      position:relative;
-      overflow:hidden;
-      box-shadow:var(--shadow-soft);
-      border:1px solid rgba(255,255,255,.10);
-      flex-shrink:0;
-    }
-
-    .brand-logo::after{
-      content:"ق";
-      position:absolute;
-      inset:0;
-      display:grid;
-      place-items:center;
-      color:#fff;
-      font-size:28px;
-      font-weight:800;
-    }
-
-    .brand-text h1{
-      margin:0;
-      font-size:1.2rem;
-      line-height:1.1;
-    }
-
-    .brand-text p{
-      margin:4px 0 0;
-      color:var(--muted);
-      font-size:.88rem;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .top-actions{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      border:none;
-      cursor:pointer;
-      transition:.22s ease;
-      border-radius:16px;
-      padding:11px 15px;
-      font-size:.94rem;
-    }
-
-    .btn:hover{
-      transform:translateY(-2px);
-    }
-
-    .btn-primary{
-      color:#fff;
-      background:linear-gradient(135deg,var(--primary2),var(--primary));
-      box-shadow:0 10px 20px rgba(67,140,240,.18);
-    }
-
-    .btn-secondary{
-      color:var(--text);
-      background:var(--surface);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow-soft);
-    }
-
-    .hero{
-      padding:22px 0 14px;
-    }
-
-    .hero-card{
-      background:var(--surface);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      border-radius:26px;
-      padding:18px;
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:18px;
-      backdrop-filter:blur(12px);
-    }
-
-    .hero-content{
-      min-width:0;
-    }
-
-    .hero-badge{
-      display:inline-block;
-      padding:7px 12px;
-      border-radius:999px;
-      background:var(--chip);
-      color:var(--primary);
-      font-size:.82rem;
-      font-weight:700;
-      margin-bottom:12px;
-    }
-
-    .hero-title{
-      margin:0;
-      font-size:clamp(1.5rem,2.6vw,2.4rem);
-      line-height:1.3;
-    }
-
-    .hero-desc{
-      margin:10px 0 16px;
-      color:var(--muted);
-      line-height:1.85;
-      font-size:.96rem;
-    }
-
-    .search-row{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
-    .search-box{
-      position:relative;
-      flex:1 1 320px;
-    }
-
-    .search-box input{
-      width:100%;
-      height:50px;
-      border-radius:16px;
-      border:1px solid var(--border);
-      background:var(--surface-2);
-      color:var(--text);
-      outline:none;
-      padding:0 44px 0 14px;
-      font-size:.96rem;
-      box-shadow:var(--shadow-soft);
-    }
-
-    .search-icon{
-      position:absolute;
-      right:14px;
-      top:50%;
-      transform:translateY(-50%);
-      width:20px;
-      height:20px;
-      opacity:.75;
-      pointer-events:none;
-    }
-
-    .hero-side{
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap:14px;
-    }
-
-    .mini-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:10px;
-    }
-
-    .mini-box{
-      background:var(--surface-2);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:14px;
-      box-shadow:var(--shadow-soft);
-    }
-
-    .mini-box strong{
-      display:block;
-      font-size:1.2rem;
-      margin-bottom:4px;
-    }
-
-    .mini-box span{
-      color:var(--muted);
-      font-size:.88rem;
-    }
-
-    .section{
-      padding:8px 0 0;
-    }
-
-    .section-head{
-      text-align:center;
-      margin-bottom:12px;
-    }
-
-    .section-head h2{
-      margin:0;
-      font-size:clamp(1.6rem,3vw,2.4rem);
-    }
-
-    .section-head p{
-      margin:8px 0 0;
-      color:var(--muted);
-      font-size:.96rem;
-    }
-
-    .main-grid{
-      display:grid;
-      grid-template-columns:.92fr 1.08fr;
-      gap:16px;
-      align-items:start;
-    }
-
-    .card{
-      background:var(--surface);
-      border:1px solid var(--border);
-      border-radius:26px;
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(10px);
-      padding:16px;
-    }
-
-    .player-head{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      padding:12px;
-      background:var(--surface-2);
-      border:1px solid var(--border);
-      border-radius:22px;
-      box-shadow:var(--shadow-soft);
-    }
-
-    .avatar{
-      width:68px;
-      height:68px;
-      border-radius:20px;
-      background:linear-gradient(135deg,var(--primary2),var(--primary));
-      color:#fff;
-      display:grid;
-      place-items:center;
-      font-size:1.85rem;
-      font-weight:800;
-      flex-shrink:0;
-    }
-
-    .player-head-text{
-      min-width:0;
-      flex:1;
-    }
-
-    .player-head-text h3{
-      margin:0;
-      font-size:1.05rem;
-      color:var(--text);
-    }
-
-    .player-head-text p{
-      margin:4px 0 0;
-      color:var(--muted);
-      font-size:.9rem;
-      line-height:1.8;
-    }
-
-    .progress-wrap{
-      margin-top:14px;
-    }
-
-    .progress{
-      height:10px;
-      border-radius:999px;
-      background:rgba(137,159,191,.18);
-      overflow:hidden;
-      position:relative;
-    }
-
-    .progress-fill{
-      width:0%;
-      height:100%;
-      border-radius:999px;
-      background:linear-gradient(90deg,var(--primary),var(--primary2));
-      transition:width .12s linear;
-      position:relative;
-    }
-
-    .progress-fill::after{
-      content:"";
-      position:absolute;
-      left:100%;
-      top:50%;
-      transform:translate(-50%,-50%);
-      width:14px;
-      height:14px;
-      border-radius:50%;
-      background:#fff;
-      box-shadow:0 4px 10px rgba(0,0,0,.15);
-    }
-
-    .time-row{
-      display:flex;
-      justify-content:space-between;
-      direction:ltr;
-      margin-top:8px;
-      color:var(--muted);
-      font-size:.86rem;
-    }
-
-    .controls{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:10px;
-      margin-top:14px;
-    }
-
-    .icon-btn{
-      height:58px;
-      border-radius:18px;
-      border:1px solid var(--border);
-      background:var(--surface-2);
-      color:var(--text);
-      cursor:pointer;
-      box-shadow:var(--shadow-soft);
-      font-size:1.12rem;
-      transition:.2s ease;
-    }
-
-    .icon-btn:hover{
-      transform:translateY(-2px);
-    }
-
-    .icon-btn.play{
-      background:linear-gradient(135deg,var(--primary),var(--primary2));
-      color:#fff;
-      font-size:1.3rem;
-      font-weight:800;
-    }
-
-    .tags{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
-
-    .tag{
-      padding:8px 12px;
-      border-radius:999px;
-      background:var(--chip);
-      border:1px solid var(--border);
-      color:var(--primary);
-      font-size:.84rem;
-    }
-
-    .suwar-top{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin-bottom:12px;
-      flex-wrap:wrap;
-    }
-
-    .suwar-top .search-box input{
-      height:46px;
-    }
-
-    .surah-list{
-      display:grid;
-      gap:9px;
-      max-height:690px;
-      overflow:auto;
-      padding-right:2px;
-    }
-
-    .surah-item{
-      display:grid;
-      grid-template-columns:52px 1fr auto;
-      gap:12px;
-      align-items:center;
-      padding:12px;
-      border-radius:18px;
-      background:var(--surface-2);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow-soft);
-      cursor:pointer;
-      transition:.2s ease;
-    }
-
-    .surah-item:hover{
-      transform:translateY(-2px);
-    }
-
-    .surah-no{
-      width:52px;
-      height:52px;
-      border-radius:16px;
-      background:linear-gradient(135deg,rgba(79,153,255,.18),rgba(92,205,247,.16));
-      color:var(--primary);
-      display:grid;
-      place-items:center;
-      font-weight:800;
-      font-size:.96rem;
-      border:1px solid var(--border);
-    }
-
-    .surah-meta h3{
-      margin:0 0 2px;
-      font-size:.98rem;
-      color:var(--text);
-    }
-
-    .surah-meta p{
-      margin:0;
-      color:var(--muted);
-      font-size:.86rem;
-    }
-
-    .surah-type{
-      color:var(--muted);
-      font-size:.84rem;
-      white-space:nowrap;
-    }
-
-    .articles{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-    }
-
-    .article{
-      background:var(--surface);
-      border:1px solid var(--border);
-      border-radius:22px;
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-
-    .article-cover{
-      height:128px;
-      background:linear-gradient(135deg,var(--primary),var(--primary2));
-      position:relative;
-    }
-
-    .article-cover::after{
-      content:"";
-      position:absolute;
-      width:130px;
-      height:130px;
-      border-radius:50%;
-      background:rgba(255,255,255,.15);
-      top:-36px;
-      left:-18px;
-    }
-
-    .article-body{
-      padding:14px;
-    }
-
-    .article-badge{
-      display:inline-block;
-      padding:6px 10px;
-      border-radius:999px;
-      background:var(--chip);
-      color:var(--primary);
-      font-size:.78rem;
-      font-weight:700;
-      margin-bottom:8px;
-    }
-
-    .article h3{
-      margin:0 0 8px;
-      font-size:.98rem;
-      color:var(--text);
-      line-height:1.7;
-    }
-
-    .article p{
-      margin:0;
-      color:var(--muted);
-      font-size:.88rem;
-      line-height:1.85;
-    }
-
-    footer{
-      padding:18px 0 30px;
-    }
-
-    .footer-card{
-      background:var(--surface);
-      border:1px solid var(--border);
-      border-radius:22px;
-      box-shadow:var(--shadow);
-      padding:14px 16px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .footer-links{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-    }
-
-    .footer-links a{
-      padding:8px 12px;
-      border-radius:12px;
-      background:var(--surface-2);
-      border:1px solid var(--border);
-      color:var(--text);
-      text-decoration:none;
-      font-size:.88rem;
-    }
-
-    /* Smaller smoother theme toggle */
-    .theme-wrap{
-      display:flex;
-      align-items:center;
-      gap:8px;
-    }
-
-    .theme-text{
-      color:var(--muted);
-      font-size:.88rem;
-      font-weight:700;
-    }
-
-    .theme-toggle{
-      position:relative;
-      width:118px;
-      height:52px;
-      border:none;
-      background:none;
-      padding:0;
-      cursor:pointer;
-      flex-shrink:0;
-    }
-
-    .theme-toggle:focus-visible{
-      outline:3px solid rgba(91,190,247,.28);
-      outline-offset:4px;
-      border-radius:999px;
-    }
-
-    .toggle-track{
-      position:absolute;
-      inset:0;
-      border-radius:999px;
-      overflow:hidden;
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.08),
-        0 8px 18px rgba(0,0,0,.12);
-      transition:.45s ease;
-      background:linear-gradient(90deg,#78c4f5,#349bf3);
-    }
-
-    body.dark .toggle-track{
-      background:linear-gradient(90deg,#082848,#09192f);
-    }
-
-    .toggle-day,
-    .toggle-night{
-      position:absolute;
-      inset:0;
-      transition:.45s ease;
-    }
-
-    .toggle-day{
-      opacity:1;
-      background:
-        radial-gradient(circle at 26% 50%, #ffd600 0 18%, transparent 19%),
-        radial-gradient(circle at 42% 74%, #eef7ff 0 8%, transparent 9%),
-        radial-gradient(circle at 52% 74%, #eef7ff 0 8%, transparent 9%),
-        radial-gradient(circle at 62% 73%, #eaf4ff 0 8%, transparent 9%),
-        linear-gradient(180deg,#91cdf7 0,#48aef5 55%,#2d98f3 100%);
-    }
-
-    .toggle-night{
-      opacity:0;
-      background:
-        radial-gradient(circle at 24% 24%, rgba(255,255,255,.9) 0 1.5%, transparent 1.7%),
-        radial-gradient(circle at 40% 60%, rgba(255,255,255,.88) 0 2%, transparent 2.2%),
-        radial-gradient(circle at 60% 38%, rgba(255,255,255,.88) 0 1.3%, transparent 1.5%),
-        radial-gradient(circle at 78% 50%, rgba(255,255,255,.88) 0 1.6%, transparent 1.8%),
-        linear-gradient(180deg,#062342,#08172b);
-    }
-
-    body.dark .toggle-day{
-      opacity:0;
-    }
-
-    body.dark .toggle-night{
-      opacity:1;
-    }
-
-    .toggle-thumb{
-      position:absolute;
-      top:5px;
-      right:5px;
-      width:42px;
-      height:42px;
-      border-radius:50%;
-      background:radial-gradient(circle at 35% 35%,#fff,#e8f0fb 70%);
-      box-shadow:
-        0 4px 10px rgba(0,0,0,.18),
-        inset -4px -4px 8px rgba(0,0,0,.05),
-        inset 4px 4px 8px rgba(255,255,255,.7);
-      transition:transform .48s cubic-bezier(.2,.8,.2,1), background .4s ease;
-      overflow:hidden;
-    }
-
-    body.dark .toggle-thumb{
-      transform:translateX(-66px);
-      background:radial-gradient(circle at 35% 35%,#fff,#dde7f7 75%);
-    }
-
-    .sun,
-    .moon{
-      position:absolute;
-      inset:0;
-      display:grid;
-      place-items:center;
-      transition:.4s ease;
-    }
-
-    .sun::before{
-      content:"";
-      width:30px;
-      height:30px;
-      border-radius:50%;
-      background:#ffd600;
-      box-shadow:0 0 12px rgba(255,214,0,.45);
-    }
-
-    .moon{
-      opacity:0;
-      transform:scale(.75);
-    }
-
-    .moon::before{
-      content:"";
-      width:30px;
-      height:30px;
-      border-radius:50%;
-      background:#eef3ff;
-    }
-
-    .moon::after{
-      content:"";
-      position:absolute;
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:#b6c3d8;
-      top:8px;
-      left:20px;
-      box-shadow:
-        -10px 10px 0 4px #b6c3d8,
-        10px 20px 0 1px #b6c3d8;
-    }
-
-    body.dark .sun{
-      opacity:0;
-      transform:scale(.75);
-    }
-
-    body.dark .moon{
-      opacity:1;
-      transform:scale(1);
-    }
-
-    @media (max-width:980px){
-      .hero-card,
-      .main-grid,
-      .articles{
-        grid-template-columns:1fr;
-      }
-    }
-
-    @media (max-width:760px){
-      .topbar-inner{
-        flex-direction:column;
-        align-items:stretch;
-      }
-
-      .top-actions{
-        justify-content:space-between;
-      }
-
-      .mini-grid{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .articles{
-        grid-template-columns:1fr;
-      }
-    }
-
-    @media (max-width:560px){
-      .container{
-        width:min(100% - 14px,1100px);
-      }
-
-      .hero-card,
-      .card{
-        padding:13px;
-        border-radius:22px;
-      }
-
-      .brand-logo{
-        width:48px;
-        height:48px;
-      }
-
-      .brand-text h1{
-        font-size:1.08rem;
-      }
-
-      .brand-text p{
-        font-size:.8rem;
-      }
-
-      .btn{
-        padding:10px 13px;
-        font-size:.9rem;
-      }
-
-      .theme-toggle{
-        width:108px;
-        height:48px;
-      }
-
-      .toggle-thumb{
-        width:38px;
-        height:38px;
-      }
-
-      body.dark .toggle-thumb{
-        transform:translateX(-60px);
-      }
-
-      .sun::before,
-      .moon::before{
-        width:28px;
-        height:28px;
-      }
-
-      .moon::after{
-        width:8px;
-        height:8px;
-        top:8px;
-        left:18px;
-        box-shadow:
-          -9px 9px 0 4px #b6c3d8,
-          8px 17px 0 1px #b6c3d8;
-      }
-
-      .player-head{
-        padding:10px;
-      }
-
-      .avatar{
-        width:60px;
-        height:60px;
-        font-size:1.65rem;
-      }
-
-      .controls{
-        grid-template-columns:repeat(3,1fr);
-      }
-
-      .icon-btn{
-        height:54px;
-        font-size:1rem;
-      }
-
-      .surah-item{
-        grid-template-columns:48px 1fr;
-      }
-
-      .surah-type{
-        grid-column:1 / -1;
-      }
-    }
-  </style>
 </head>
 <body>
   <header class="topbar">
     <div class="container topbar-inner">
       <a href="#" class="brand">
-        <div class="brand-logo"></div>
+        <div class="brand-logo">ق</div>
         <div class="brand-text">
           <h1>القارئ</h1>
           <p>استمع إلى القرآن الكريم بواجهة أنيقة وحديثة</p>
@@ -904,19 +34,33 @@
       <div class="top-actions">
         <div class="theme-wrap">
           <span class="theme-text">الوضع</span>
+
           <button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع">
             <span class="toggle-track">
-              <span class="toggle-day"></span>
-              <span class="toggle-night"></span>
+              <span class="toggle-day-scene">
+                <span class="day-sun"></span>
+                <span class="day-cloud c1"></span>
+                <span class="day-cloud c2"></span>
+                <span class="day-cloud c3"></span>
+                <span class="day-cloud c4"></span>
+              </span>
+
+              <span class="toggle-night-scene">
+                <span class="night-star s1"></span>
+                <span class="night-star s2"></span>
+                <span class="night-star s3"></span>
+                <span class="night-star s4"></span>
+              </span>
             </span>
+
             <span class="toggle-thumb">
-              <span class="sun"></span>
-              <span class="moon"></span>
+              <span class="thumb-sun"></span>
+              <span class="thumb-moon"></span>
             </span>
           </button>
         </div>
 
-        <button class="btn btn-secondary" id="shareBtn">مشاركة الموقع</button>
+        <button class="btn btn-secondary" id="shareBtn" type="button">مشاركة الموقع</button>
         <a class="btn btn-primary" href="#listen">ابدأ الاستماع</a>
       </div>
     </div>
@@ -927,21 +71,27 @@
       <div class="container">
         <div class="hero-card">
           <div class="hero-content">
-            <span class="hero-badge">واجهة مرتبة • تشغيل فعلي • وضع سلس</span>
-            <h2 class="hero-title">استمع إلى القرآن الكريم بأصوات جميلة</h2>
+            <span class="hero-badge">استماع • قراءة • بحث آيات</span>
+            <h2 class="hero-title">استمع إلى القرآن الكريم واقرأه بسهولة</h2>
             <p class="hero-desc">
-              تصميم أخف وأرتب للجوال، مع زر وضع ليلي ونهاري بحجم أصغر وحركة سلسة، ومشغل مرتب مع قائمة سور قابلة للبحث.
+              اختر القارئ، استمع إلى السور، ابحث في الآيات، واقرأ النص القرآني من داخل الموقع بواجهة مرتبة وسلسة.
             </p>
 
             <div class="search-row">
               <div class="search-box">
-                <input type="text" id="mainSearch" placeholder="ابحث عن سورة..." />
-                <svg class="search-icon" viewBox="0 0 24 24" fill="none">
-                  <path d="M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2"/>
-                  <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
+                <input type="text" id="mainSearch" placeholder="ابحث عن سورة أو آية..." />
+                <button class="search-icon-btn" id="mainSearchBtn" type="button" aria-label="بحث">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+                  </svg>
+                </button>
               </div>
-              <button class="btn btn-primary" id="mainSearchBtn">بحث</button>
+            </div>
+
+            <div class="hero-actions">
+              <button class="btn btn-secondary" id="heroShareBtn" type="button">نسخ رابط الموقع</button>
+              <button class="btn btn-secondary" id="openReaderBtn" type="button">قراءة القرآن</button>
             </div>
           </div>
 
@@ -949,23 +99,28 @@
             <div class="mini-grid">
               <div class="mini-box">
                 <strong>114</strong>
-                <span>سورة قرآنية</span>
+                <span>سورة كاملة</span>
               </div>
               <div class="mini-box">
-                <strong>صوت</strong>
-                <span>تشغيل واضح وسهل</span>
+                <strong>30+</strong>
+                <span>قارئ مشهور</span>
               </div>
               <div class="mini-box">
-                <strong>ليل/نهار</strong>
-                <span>حركة أنعم وأصغر</span>
+                <strong>بحث</strong>
+                <span>بحث ذكي في السور والآيات</span>
               </div>
               <div class="mini-box">
-                <strong>مرتب</strong>
-                <span>مناسب أكثر للجوال</span>
+                <strong>قراءة</strong>
+                <span>قراءة مع أو بدون استماع</span>
               </div>
             </div>
 
-            <button class="btn btn-secondary" id="heroShareBtn">نسخ رابط الموقع</button>
+            <div class="notice-box">
+              <h3>تنبيه مهم</h3>
+              <p>
+                الاستماع لك وتحديد الكلمات أو الآيات لا يعني الحكم على صحة أحكام التلاوة، وإنما فقط لتحديد الموضع الذي تقرأه.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -975,21 +130,39 @@
       <div class="container">
         <div class="section-head">
           <h2>المشغل وقائمة السور</h2>
-          <p>تصميم مرتب مع مشغل واضح وقائمة أنيقة قابلة للبحث</p>
+          <p>اختر القارئ والسورة ثم ابدأ الاستماع</p>
         </div>
 
         <div class="main-grid">
-          <div class="card">
+          <div class="card player-card">
+            <div class="player-top-options">
+              <div class="field">
+                <label for="reciterSelect">القارئ</label>
+                <select id="reciterSelect">
+                  <option value="">جارِ تحميل القراء...</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="listenModeSelect">الوضع</label>
+                <select id="listenModeSelect">
+                  <option value="audio">استماع بدون نص</option>
+                  <option value="sync">استماع مع النص</option>
+                  <option value="reader">قراءة القرآن</option>
+                </select>
+              </div>
+            </div>
+
             <div class="player-head">
               <div class="avatar">ق</div>
               <div class="player-head-text">
                 <h3 id="surahTitle">سورة الفاتحة</h3>
-                <p id="surahMeta">القارئ: مشاري العفاسي • ٧ آيات • مكية</p>
+                <p id="surahMeta">اختر قارئًا وسورة للبدء</p>
               </div>
             </div>
 
             <div class="progress-wrap">
-              <div class="progress">
+              <div class="progress" id="progressBar">
                 <div class="progress-fill" id="progressFill"></div>
               </div>
               <div class="time-row">
@@ -999,153 +172,173 @@
             </div>
 
             <div class="controls">
-              <button class="icon-btn play" id="playBtn" aria-label="تشغيل">▶</button>
-              <button class="icon-btn" id="prevBtn" aria-label="السابق">⏮</button>
-              <button class="icon-btn" id="repeatBtn" aria-label="إعادة">↻</button>
-              <button class="icon-btn" id="downloadBtn" aria-label="تحميل">⬇</button>
-              <button class="icon-btn" id="nextBtn" aria-label="التالي">⏭</button>
-              <button class="icon-btn" id="muteBtn" aria-label="كتم">🔇</button>
+              <button class="icon-btn" id="repeatBtn" type="button" aria-label="إعادة">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <polyline points="17 1 21 5 17 9"></polyline>
+                  <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                  <polyline points="7 23 3 19 7 15"></polyline>
+                  <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                </svg>
+              </button>
+
+              <button class="icon-btn" id="prevBtn" type="button" aria-label="السابق">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="19 20 9 12 19 4 19 20"></polygon>
+                  <line x1="5" y1="19" x2="5" y2="5"></line>
+                </svg>
+              </button>
+
+              <button class="icon-btn play" id="playBtn" type="button" aria-label="تشغيل">
+                <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="8 5 19 12 8 19 8 5"></polygon>
+                </svg>
+                <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="6" y="5" width="4" height="14"></rect>
+                  <rect x="14" y="5" width="4" height="14"></rect>
+                </svg>
+              </button>
+
+              <button class="icon-btn" id="nextBtn" type="button" aria-label="التالي">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                  <line x1="19" y1="5" x2="19" y2="19"></line>
+                </svg>
+              </button>
+
+              <button class="icon-btn" id="downloadBtn" type="button" aria-label="تحميل">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3v12"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <path d="M5 21h14"></path>
+                </svg>
+              </button>
+
+              <button class="icon-btn" id="muteBtn" type="button" aria-label="كتم الصوت">
+                <svg class="icon-volume" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M15.5 8.5a5 5 0 0 1 0 7"></path>
+                  <path d="M18.5 5.5a9 9 0 0 1 0 13"></path>
+                </svg>
+                <svg class="icon-muted" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <line x1="23" y1="9" x2="17" y2="15"></line>
+                  <line x1="17" y1="9" x2="23" y2="15"></line>
+                </svg>
+              </button>
             </div>
 
             <div class="tags">
               <span class="tag">حفص عن عاصم</span>
               <span class="tag">تلاوة مرتلة</span>
-              <span class="tag">صوت نقي</span>
+              <span class="tag">نص قرآني</span>
+            </div>
+
+            <div class="reader-note">
+              <strong>ملاحظة:</strong>
+              الاستماع لك أو تحديد الكلمات لا يعني أن تلاوتك صحيحة من ناحية الأحكام، بل فقط يحدد موضع قراءتك.
             </div>
           </div>
 
-          <div class="card">
+          <div class="card surah-card">
             <div class="suwar-top">
               <div class="search-box">
                 <input type="text" id="surahSearch" placeholder="ابحث داخل السور..." />
-                <svg class="search-icon" viewBox="0 0 24 24" fill="none">
-                  <path d="M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2"/>
-                  <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
+                <button class="search-icon-btn" id="surahSearchBtn" type="button" aria-label="بحث">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+                  </svg>
+                </button>
               </div>
             </div>
 
             <div class="surah-list" id="surahList">
-              <div class="surah-item" data-title="سورة الفاتحة" data-meta="القارئ: مشاري العفاسي • ٧ آيات • مكية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/001.mp3">
-                <div class="surah-no">١</div>
-                <div class="surah-meta">
-                  <h3>الفاتحة</h3>
-                  <p>٧ آيات • الجزء ١</p>
-                </div>
-                <div class="surah-type">مكية</div>
-              </div>
-
-              <div class="surah-item" data-title="سورة البقرة" data-meta="القارئ: مشاري العفاسي • ٢٨٦ آية • مدنية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/002.mp3">
-                <div class="surah-no">٢</div>
-                <div class="surah-meta">
-                  <h3>البقرة</h3>
-                  <p>٢٨٦ آية • الجزء ١</p>
-                </div>
-                <div class="surah-type">مدنية</div>
-              </div>
-
-              <div class="surah-item" data-title="سورة آل عمران" data-meta="القارئ: مشاري العفاسي • ٢٠٠ آية • مدنية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/003.mp3">
-                <div class="surah-no">٣</div>
-                <div class="surah-meta">
-                  <h3>آل عمران</h3>
-                  <p>٢٠٠ آية • الجزء ٣</p>
-                </div>
-                <div class="surah-type">مدنية</div>
-              </div>
-
-              <div class="surah-item" data-title="سورة النساء" data-meta="القارئ: مشاري العفاسي • ١٧٦ آية • مدنية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/004.mp3">
-                <div class="surah-no">٤</div>
-                <div class="surah-meta">
-                  <h3>النساء</h3>
-                  <p>١٧٦ آية • الجزء ٤</p>
-                </div>
-                <div class="surah-type">مدنية</div>
-              </div>
-
-              <div class="surah-item" data-title="سورة المائدة" data-meta="القارئ: مشاري العفاسي • ١٢٠ آية • مدنية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/005.mp3">
-                <div class="surah-no">٥</div>
-                <div class="surah-meta">
-                  <h3>المائدة</h3>
-                  <p>١٢٠ آية • الجزء ٦</p>
-                </div>
-                <div class="surah-type">مدنية</div>
-              </div>
-
-              <div class="surah-item" data-title="سورة الأنعام" data-meta="القارئ: مشاري العفاسي • ١٦٥ آية • مكية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/006.mp3">
-                <div class="surah-no">٦</div>
-                <div class="surah-meta">
-                  <h3>الأنعام</h3>
-                  <p>١٦٥ آية • الجزء ٧</p>
-                </div>
-                <div class="surah-type">مكية</div>
-              </div>
-
-              <div class="surah-item" data-title="سورة الأعراف" data-meta="القارئ: مشاري العفاسي • ٢٠٦ آية • مكية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/007.mp3">
-                <div class="surah-no">٧</div>
-                <div class="surah-meta">
-                  <h3>الأعراف</h3>
-                  <p>٢٠٦ آية • الجزء ٨</p>
-                </div>
-                <div class="surah-type">مكية</div>
-              </div>
-
-              <div class="surah-item" data-title="سورة الأنفال" data-meta="القارئ: مشاري العفاسي • ٧٥ آية • مدنية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/008.mp3">
-                <div class="surah-no">٨</div>
-                <div class="surah-meta">
-                  <h3>الأنفال</h3>
-                  <p>٧٥ آية • الجزء ٩</p>
-                </div>
-                <div class="surah-type">مدنية</div>
-              </div>
-
-              <div class="surah-item" data-title="سورة التوبة" data-meta="القارئ: مشاري العفاسي • ١٢٩ آية • مدنية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/009.mp3">
-                <div class="surah-no">٩</div>
-                <div class="surah-meta">
-                  <h3>التوبة</h3>
-                  <p>١٢٩ آية • الجزء ١٠</p>
-                </div>
-                <div class="surah-type">مدنية</div>
-              </div>
-
-              <div class="surah-item" data-title="سورة يونس" data-meta="القارئ: مشاري العفاسي • ١٠٩ آية • مكية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/010.mp3">
-                <div class="surah-no">١٠</div>
-                <div class="surah-meta">
-                  <h3>يونس</h3>
-                  <p>١٠٩ آية • الجزء ١١</p>
-                </div>
-                <div class="surah-type">مكية</div>
-              </div>
+              <div class="loading-box">جارِ تحميل السور...</div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="articles">
-          <article class="article">
-            <div class="article-cover"></div>
-            <div class="article-body">
-              <span class="article-badge">مقالة</span>
-              <h3>كيف تجعل الاستماع للقرآن عادة يومية؟</h3>
-              <p>تنظيم بسيط للوقت واختيار قارئ مناسب يساعدك على الثبات والاستمرار براحة.</p>
-            </div>
-          </article>
+    <section class="section" id="ayahSearchSection">
+      <div class="container">
+        <div class="section-head">
+          <h2>البحث في الآيات</h2>
+          <p>ابحث بجزء من الآية وسيظهر لك الأقرب مع السورة ورقم الآية</p>
+        </div>
 
-          <article class="article">
-            <div class="article-cover"></div>
-            <div class="article-body">
-              <span class="article-badge">دليل</span>
-              <h3>ما الفرق بين التلاوة المرتلة والمجودة؟</h3>
-              <p>شرح مبسط يساعد الزائر على فهم نوع التلاوة واختيار ما يناسبه بسهولة.</p>
+        <div class="card">
+          <div class="ayah-search-row">
+            <div class="search-box big">
+              <input type="text" id="ayahSearchInput" placeholder="ابحث عن آية قرآنية..." />
+              <button class="search-icon-btn" id="ayahSearchBtn" type="button" aria-label="بحث">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+                </svg>
+              </button>
             </div>
-          </article>
+          </div>
 
-          <article class="article">
-            <div class="article-cover"></div>
-            <div class="article-body">
-              <span class="article-badge">مفيد</span>
-              <h3>أفضل طريقة لترتيب السور والقراء داخل الموقع</h3>
-              <p>تنظيم جيد يرفع من جمال الواجهة ويجعل الوصول للمحتوى أسرع وأسهل.</p>
+          <div class="ayah-results" id="ayahResults">
+            <div class="placeholder-box">اكتب جزءًا من آية لبدء البحث</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="readerSection">
+      <div class="container">
+        <div class="section-head">
+          <h2>قراءة القرآن</h2>
+          <p>اقرأ السورة، واضغط على أي آية لتشغيلها بصوت القارئ المختار</p>
+        </div>
+
+        <div class="card reader-card">
+          <div class="reader-topbar">
+            <div class="field">
+              <label for="readerSurahSelect">اختر السورة</label>
+              <select id="readerSurahSelect">
+                <option value="">جارِ تحميل السور...</option>
+              </select>
             </div>
-          </article>
+
+            <div class="field">
+              <label for="readerReciterSelect">قارئ الآيات</label>
+              <select id="readerReciterSelect">
+                <option value="">جارِ تحميل القراء...</option>
+              </select>
+            </div>
+
+            <button class="btn btn-secondary" id="readerLoadBtn" type="button">عرض السورة</button>
+          </div>
+
+          <div class="reader-content" id="readerContent">
+            <div class="placeholder-box">اختر سورة ثم اضغط على "عرض السورة"</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="liveListenSection">
+      <div class="container">
+        <div class="section-head">
+          <h2>الاستماع للزائر</h2>
+          <p>لتحديد موضع القراءة داخل النص فقط، وليس للحكم على صحة أحكام التلاوة</p>
+        </div>
+
+        <div class="card mic-card">
+          <div class="mic-warning">
+            <strong>تنبيه بارز:</strong>
+            هذه الميزة لا تحدد صحة أحكام التلاوة أو التجويد، وإنما فقط تحاول معرفة الموضع الذي تقرأه داخل الآيات.
+          </div>
+
+          <div class="mic-actions">
+            <button class="btn btn-primary" id="startMicBtn" type="button">ابدأ الاستماع لي</button>
+            <button class="btn btn-secondary" id="stopMicBtn" type="button">إيقاف الاستماع</button>
+          </div>
+
+          <div class="mic-status" id="micStatus">لم يبدأ الاستماع بعد</div>
         </div>
       </div>
     </section>
@@ -1156,224 +349,17 @@
       <div class="footer-card">
         <div>© 2026 القارئ - جميع الحقوق محفوظة</div>
         <div class="footer-links">
-          <a href="#">من نحن</a>
-          <a href="#">سياسة الخصوصية</a>
-          <a href="#">اتصل بنا</a>
+          <a href="#readerSection">قراءة القرآن</a>
+          <a href="#ayahSearchSection">البحث في الآيات</a>
+          <a href="#listen">الاستماع</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <audio id="audioPlayer" preload="metadata">
-    <source src="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/001.mp3" type="audio/mpeg">
-  </audio>
+  <audio id="audioPlayer" preload="metadata"></audio>
+  <audio id="ayahAudioPlayer" preload="metadata"></audio>
 
-  <script>
-    const body = document.body;
-    const themeToggle = document.getElementById('themeToggle');
-    const themeColorMeta = document.getElementById('themeColorMeta');
-
-    const shareBtn = document.getElementById('shareBtn');
-    const heroShareBtn = document.getElementById('heroShareBtn');
-
-    const mainSearch = document.getElementById('mainSearch');
-    const mainSearchBtn = document.getElementById('mainSearchBtn');
-    const surahSearch = document.getElementById('surahSearch');
-    const surahList = document.getElementById('surahList');
-
-    const surahTitle = document.getElementById('surahTitle');
-    const surahMeta = document.getElementById('surahMeta');
-
-    const audioPlayer = document.getElementById('audioPlayer');
-    const playBtn = document.getElementById('playBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const repeatBtn = document.getElementById('repeatBtn');
-    const downloadBtn = document.getElementById('downloadBtn');
-    const muteBtn = document.getElementById('muteBtn');
-
-    const progressFill = document.getElementById('progressFill');
-    const currentTimeEl = document.getElementById('currentTime');
-    const durationTimeEl = document.getElementById('durationTime');
-
-    let repeatEnabled = false;
-    let currentIndex = 0;
-    let surahItems = Array.from(document.querySelectorAll('.surah-item'));
-
-    const savedTheme = localStorage.getItem('qarie-theme');
-    if(savedTheme === 'dark'){
-      body.classList.add('dark');
-      themeColorMeta.setAttribute('content', '#03101e');
-    }
-
-    themeToggle.addEventListener('click', () => {
-      body.classList.toggle('dark');
-      const isDark = body.classList.contains('dark');
-      localStorage.setItem('qarie-theme', isDark ? 'dark' : 'light');
-      themeColorMeta.setAttribute('content', isDark ? '#03101e' : '#071427');
-    });
-
-    function formatTime(seconds){
-      if (isNaN(seconds)) return '00:00';
-      const mins = Math.floor(seconds / 60);
-      const secs = Math.floor(seconds % 60);
-      return `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
-    }
-
-    function updatePlayButton(){
-      playBtn.textContent = audioPlayer.paused ? '▶' : '⏸';
-    }
-
-    function loadSurah(index, autoPlay = false){
-      if(index < 0) index = surahItems.length - 1;
-      if(index >= surahItems.length) index = 0;
-
-      currentIndex = index;
-      const item = surahItems[currentIndex];
-      const title = item.dataset.title;
-      const meta = item.dataset.meta;
-      const audio = item.dataset.audio;
-
-      surahTitle.textContent = title;
-      surahMeta.textContent = meta;
-      audioPlayer.src = audio;
-      audioPlayer.load();
-
-      if(autoPlay){
-        audioPlayer.play().then(() => {
-          updatePlayButton();
-        }).catch(() => {
-          updatePlayButton();
-        });
-      } else {
-        updatePlayButton();
-      }
-    }
-
-    playBtn.addEventListener('click', () => {
-      if(audioPlayer.paused){
-        audioPlayer.play().then(updatePlayButton).catch(() => {
-          alert('تعذر تشغيل الصوت. تأكد من الرابط أو جرّب الضغط مرة ثانية.');
-        });
-      } else {
-        audioPlayer.pause();
-        updatePlayButton();
-      }
-    });
-
-    prevBtn.addEventListener('click', () => {
-      loadSurah(currentIndex - 1, true);
-    });
-
-    nextBtn.addEventListener('click', () => {
-      loadSurah(currentIndex + 1, true);
-    });
-
-    repeatBtn.addEventListener('click', () => {
-      repeatEnabled = !repeatEnabled;
-      audioPlayer.loop = repeatEnabled;
-      repeatBtn.style.background = repeatEnabled
-        ? 'linear-gradient(135deg, var(--primary), var(--primary2))'
-        : 'var(--surface-2)';
-      repeatBtn.style.color = repeatEnabled ? '#fff' : 'var(--text)';
-    });
-
-    muteBtn.addEventListener('click', () => {
-      audioPlayer.muted = !audioPlayer.muted;
-      muteBtn.textContent = audioPlayer.muted ? '🔊' : '🔇';
-    });
-
-    downloadBtn.addEventListener('click', () => {
-      const link = document.createElement('a');
-      link.href = audioPlayer.src;
-      link.download = '';
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-    });
-
-    audioPlayer.addEventListener('timeupdate', () => {
-      if(audioPlayer.duration){
-        const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-        progressFill.style.width = progress + '%';
-        currentTimeEl.textContent = formatTime(audioPlayer.currentTime);
-        durationTimeEl.textContent = '-' + formatTime(audioPlayer.duration - audioPlayer.currentTime);
-      }
-    });
-
-    audioPlayer.addEventListener('loadedmetadata', () => {
-      currentTimeEl.textContent = formatTime(0);
-      durationTimeEl.textContent = '-' + formatTime(audioPlayer.duration);
-    });
-
-    audioPlayer.addEventListener('ended', () => {
-      if(!repeatEnabled){
-        loadSurah(currentIndex + 1, true);
-      }
-      updatePlayButton();
-    });
-
-    audioPlayer.addEventListener('pause', updatePlayButton);
-    audioPlayer.addEventListener('play', updatePlayButton);
-
-    surahList.addEventListener('click', (e) => {
-      const item = e.target.closest('.surah-item');
-      if(!item) return;
-
-      const visibleItems = Array.from(document.querySelectorAll('.surah-item')).filter(el => el.style.display !== 'none');
-      const clickedIndex = surahItems.indexOf(item);
-      if(clickedIndex !== -1){
-        loadSurah(clickedIndex, true);
-      }
-    });
-
-    function filterSurahs(value){
-      const q = value.trim().toLowerCase();
-      surahItems.forEach(item => {
-        const title = item.dataset.title.toLowerCase();
-        const text = item.innerText.toLowerCase();
-        item.style.display = (title.includes(q) || text.includes(q)) ? '' : 'none';
-      });
-    }
-
-    surahSearch.addEventListener('input', (e) => filterSurahs(e.target.value));
-    mainSearch.addEventListener('input', (e) => {
-      filterSurahs(e.target.value);
-      surahSearch.value = e.target.value;
-    });
-
-    mainSearchBtn.addEventListener('click', () => {
-      filterSurahs(mainSearch.value);
-      document.getElementById('listen').scrollIntoView({behavior:'smooth'});
-    });
-
-    async function shareSite(btn){
-      const data = {
-        title: 'القارئ | استمع إلى القرآن الكريم',
-        text: 'موقع أنيق للاستماع إلى القرآن الكريم.',
-        url: window.location.href
-      };
-
-      if(navigator.share){
-        try{
-          await navigator.share(data);
-        }catch(e){}
-      }else{
-        try{
-          await navigator.clipboard.writeText(window.location.href);
-          const old = btn.textContent;
-          btn.textContent = 'تم نسخ الرابط';
-          setTimeout(() => btn.textContent = old, 1600);
-        }catch(e){
-          alert('تعذر النسخ');
-        }
-      }
-    }
-
-    shareBtn.addEventListener('click', () => shareSite(shareBtn));
-    heroShareBtn.addEventListener('click', () => shareSite(heroShareBtn));
-
-    loadSurah(0, false);
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
