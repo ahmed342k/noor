@@ -4,132 +4,73 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>القارئ | استمع إلى القرآن الكريم بأصوات أجمل القرّاء</title>
-  <meta name="description" content="موقع القارئ للاستماع إلى القرآن الكريم بأصوات عدد كبير من القرّاء، مع واجهة أنيقة، بحث سريع، مقالات مفيدة، ووضع ليلي ونهاري مميز." />
-  <meta name="keywords" content="القرآن الكريم, استماع القرآن, قراء القرآن, القارئ, سور القرآن, mp3 قرآن, تلاوات, القرآن صوت" />
-  <meta name="author" content="القارئ" />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#0f172a" id="themeColorMeta" />
-  <meta name="referrer" content="no-referrer" />
+  <title>القارئ | استمع إلى القرآن الكريم بأصوات جميلة</title>
+  <meta name="description" content="استمع إلى القرآن الكريم بأصوات القراء مع واجهة أنيقة، بحث سريع، ووضع ليلي ونهاري سلس." />
+  <meta name="keywords" content="القرآن, القارئ, استماع القرآن, سور القرآن, قراء القرآن" />
+  <meta name="theme-color" content="#071427" id="themeColorMeta" />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
   <meta property="og:title" content="القارئ | استمع إلى القرآن الكريم" />
-  <meta property="og:description" content="استمع إلى القرآن الكريم بأصوات مميزة مع واجهة حديثة ووضع ليلي ونهاري ومقالات مفيدة." />
+  <meta property="og:description" content="واجهة أنيقة للاستماع إلى القرآن الكريم." />
   <meta property="og:image" content="share.jpg" />
-  <meta property="og:url" content="/" />
-  <meta property="og:site_name" content="القارئ" />
-  <meta property="og:locale" content="ar_AR" />
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="القارئ | استمع إلى القرآن الكريم" />
-  <meta name="twitter:description" content="استمع إلى القرآن الكريم بأصوات مميزة مع واجهة حديثة ووضع ليلي ونهاري." />
-  <meta name="twitter:image" content="share.jpg" />
-
-  <!-- Icons -->
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="logo.png" />
 
-  <!-- Canonical -->
-  <link rel="canonical" href="/" />
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800&display=swap" rel="stylesheet">
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"القارئ",
-    "url":"/",
-    "inLanguage":"ar",
-    "description":"موقع للاستماع إلى القرآن الكريم بأصوات القراء مع مقالات مفيدة وواجهة حديثة."
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"القارئ",
-    "url":"/",
-    "logo":"logo.png"
-  }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #f4f8ff;
-      --bg-soft: #edf4ff;
-      --surface: rgba(255,255,255,0.82);
-      --surface-2: rgba(255,255,255,0.95);
-      --text: #112033;
-      --muted: #66778a;
-      --primary: #2f80ed;
-      --primary-2: #56ccf2;
-      --border: rgba(40, 87, 143, 0.14);
-      --shadow: 0 10px 35px rgba(37, 74, 128, 0.12);
-      --shadow-soft: 0 6px 20px rgba(37, 74, 128, 0.09);
-      --success: #10b981;
-      --warning: #f59e0b;
-      --card-radius: 26px;
-      --chip-radius: 999px;
-      --toggle-track1: #8bc6f0;
-      --toggle-track2: #2d9cf3;
-      --toggle-cloud: #eef7ff;
-      --toggle-sun: #ffd600;
-      --toggle-night1: #032844;
-      --toggle-night2: #091b33;
-      --toggle-moon: #eaf1ff;
+      --bg:#f3f7fd;
+      --bg2:#eaf1fa;
+      --surface:rgba(255,255,255,.88);
+      --surface-2:#ffffff;
+      --text:#10243b;
+      --muted:#73859a;
+      --primary:#3b82f6;
+      --primary2:#64d2ff;
+      --border:rgba(54,95,146,.12);
+      --shadow:0 10px 30px rgba(33,69,120,.10);
+      --shadow-soft:0 6px 18px rgba(33,69,120,.08);
+      --chip:rgba(78,168,255,.10);
     }
 
     body.dark{
-      --bg: #06101d;
-      --bg-soft: #09192d;
-      --surface: rgba(12,22,38,0.82);
-      --surface-2: rgba(10,18,32,0.96);
-      --text: #ebf3ff;
-      --muted: #94a7bc;
-      --primary: #63cdda;
-      --primary-2: #4ea8ff;
-      --border: rgba(173, 213, 255, 0.10);
-      --shadow: 0 12px 36px rgba(0,0,0,0.35);
-      --shadow-soft: 0 8px 24px rgba(0,0,0,0.24);
+      --bg:#03101e;
+      --bg2:#071427;
+      --surface:rgba(7,18,35,.78);
+      --surface-2:#061325;
+      --text:#eef5ff;
+      --muted:#92a6bc;
+      --primary:#5ccdf7;
+      --primary2:#4f99ff;
+      --border:rgba(151,194,255,.10);
+      --shadow:0 14px 34px rgba(0,0,0,.33);
+      --shadow-soft:0 8px 22px rgba(0,0,0,.24);
+      --chip:rgba(92,205,247,.10);
     }
 
-    *{ box-sizing:border-box; }
+    *{box-sizing:border-box}
 
-    html{
-      scroll-behavior:smooth;
-    }
+    html{scroll-behavior:smooth}
 
     body{
       margin:0;
-      font-family:"Cairo", sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(86, 204, 242, 0.18), transparent 25%),
-        radial-gradient(circle at top left, rgba(47, 128, 237, 0.12), transparent 22%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+      font-family:"Cairo",sans-serif;
       color:var(--text);
-      transition: background .35s ease, color .35s ease;
+      background:
+        radial-gradient(circle at top right, rgba(99,160,255,.12), transparent 24%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
+      transition:background .35s ease,color .35s ease;
     }
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    img{
-      max-width:100%;
-      display:block;
+    button,input{
+      font-family:inherit;
     }
 
     .container{
-      width:min(1180px, calc(100% - 28px));
+      width:min(1100px,calc(100% - 20px));
       margin:auto;
     }
 
@@ -137,54 +78,43 @@
       position:sticky;
       top:0;
       z-index:50;
-      backdrop-filter: blur(14px);
-      background: rgba(255,255,255,0.18);
+      backdrop-filter:blur(12px);
+      background:rgba(255,255,255,.16);
       border-bottom:1px solid var(--border);
     }
 
     body.dark .topbar{
-      background: rgba(6,16,29,0.35);
+      background:rgba(3,10,20,.32);
     }
 
     .topbar-inner{
-      min-height:84px;
+      min-height:74px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:18px;
-      padding:12px 0;
+      gap:14px;
+      padding:10px 0;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:12px;
+      text-decoration:none;
+      color:inherit;
       min-width:0;
     }
 
     .brand-logo{
-      width:58px;
-      height:58px;
-      border-radius:18px;
-      background:
-        linear-gradient(135deg, #0f172a 0%, #10294b 55%, #1e88ff 100%);
-      box-shadow: var(--shadow-soft);
+      width:54px;
+      height:54px;
+      border-radius:16px;
+      background:linear-gradient(135deg,#0f1f39,#0a2f63 55%,#3b82f6 100%);
       position:relative;
       overflow:hidden;
+      box-shadow:var(--shadow-soft);
+      border:1px solid rgba(255,255,255,.10);
       flex-shrink:0;
-      border:1px solid rgba(255,255,255,0.14);
-    }
-
-    .brand-logo::before{
-      content:"";
-      position:absolute;
-      inset:12px;
-      border-radius:14px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.18) 0 2px, transparent 3px),
-        radial-gradient(circle at 68% 24%, rgba(255,255,255,0.12) 0 2px, transparent 3px),
-        radial-gradient(circle at 75% 72%, rgba(255,255,255,0.16) 0 2px, transparent 3px),
-        linear-gradient(180deg, rgba(255,255,255,0.1), transparent);
     }
 
     .brand-logo::after{
@@ -196,23 +126,18 @@
       color:#fff;
       font-size:28px;
       font-weight:800;
-      text-shadow:0 4px 18px rgba(0,0,0,0.28);
-    }
-
-    .brand-text{
-      min-width:0;
     }
 
     .brand-text h1{
       margin:0;
-      font-size:1.35rem;
+      font-size:1.2rem;
       line-height:1.1;
     }
 
     .brand-text p{
-      margin:6px 0 0;
+      margin:4px 0 0;
       color:var(--muted);
-      font-size:.95rem;
+      font-size:.88rem;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
@@ -221,343 +146,244 @@
     .top-actions{
       display:flex;
       align-items:center;
-      gap:12px;
+      gap:10px;
       flex-wrap:wrap;
-      justify-content:flex-end;
     }
 
-    .link-btn, .action-btn{
+    .btn{
       border:none;
       cursor:pointer;
+      transition:.22s ease;
       border-radius:16px;
-      padding:12px 16px;
-      font-family:inherit;
-      font-size:.96rem;
-      transition:.25s ease;
+      padding:11px 15px;
+      font-size:.94rem;
     }
 
-    .action-btn{
-      background:linear-gradient(135deg, var(--primary), var(--primary-2));
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-primary{
       color:#fff;
-      box-shadow: 0 10px 20px rgba(69,130,220,.18);
+      background:linear-gradient(135deg,var(--primary2),var(--primary));
+      box-shadow:0 10px 20px rgba(67,140,240,.18);
     }
 
-    .action-btn:hover{
-      transform:translateY(-2px);
-      filter:brightness(1.03);
-    }
-
-    .link-btn{
-      background:var(--surface);
+    .btn-secondary{
       color:var(--text);
+      background:var(--surface);
       border:1px solid var(--border);
-      backdrop-filter: blur(10px);
-    }
-
-    .link-btn:hover{
-      transform:translateY(-2px);
       box-shadow:var(--shadow-soft);
     }
 
     .hero{
-      padding:34px 0 24px;
+      padding:22px 0 14px;
     }
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:22px;
-      align-items:stretch;
-    }
-
-    .glass-card{
+    .hero-card{
       background:var(--surface);
       border:1px solid var(--border);
-      border-radius:var(--card-radius);
       box-shadow:var(--shadow);
-      backdrop-filter: blur(12px);
-      transition: background .35s ease, border-color .35s ease, box-shadow .35s ease;
+      border-radius:26px;
+      padding:18px;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+      backdrop-filter:blur(12px);
     }
 
-    .hero-main{
-      padding:26px;
-      position:relative;
-      overflow:hidden;
+    .hero-content{
+      min-width:0;
     }
 
-    .hero-main::before{
-      content:"";
-      position:absolute;
-      width:320px;
-      height:320px;
-      border-radius:50%;
-      top:-140px;
-      left:-90px;
-      background: radial-gradient(circle, rgba(86,204,242,.18), transparent 68%);
-      pointer-events:none;
-    }
-
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 14px;
+    .hero-badge{
+      display:inline-block;
+      padding:7px 12px;
       border-radius:999px;
-      background:rgba(86,204,242,.12);
+      background:var(--chip);
       color:var(--primary);
+      font-size:.82rem;
       font-weight:700;
-      font-size:.9rem;
-      margin-bottom:16px;
+      margin-bottom:12px;
     }
 
     .hero-title{
       margin:0;
-      font-size:clamp(1.9rem, 3vw, 3rem);
-      line-height:1.25;
+      font-size:clamp(1.5rem,2.6vw,2.4rem);
+      line-height:1.3;
     }
 
     .hero-desc{
-      margin:16px 0 22px;
+      margin:10px 0 16px;
       color:var(--muted);
-      line-height:1.9;
-      font-size:1rem;
+      line-height:1.85;
+      font-size:.96rem;
     }
 
-    .hero-points{
+    .search-row{
       display:flex;
-      flex-wrap:wrap;
       gap:10px;
-      margin-bottom:20px;
-    }
-
-    .chip{
-      background:var(--surface-2);
-      border:1px solid var(--border);
-      border-radius:var(--chip-radius);
-      padding:10px 14px;
-      font-size:.92rem;
-      color:var(--text);
-      box-shadow:var(--shadow-soft);
-    }
-
-    .hero-search{
-      display:flex;
-      gap:12px;
-      align-items:center;
       flex-wrap:wrap;
-      margin-top:16px;
+      align-items:center;
     }
 
     .search-box{
-      flex:1 1 400px;
-      min-width:280px;
       position:relative;
+      flex:1 1 320px;
     }
 
     .search-box input{
       width:100%;
-      height:58px;
-      border:none;
-      outline:none;
-      border-radius:18px;
-      padding:0 58px 0 18px;
+      height:50px;
+      border-radius:16px;
+      border:1px solid var(--border);
       background:var(--surface-2);
       color:var(--text);
-      font-family:inherit;
-      font-size:1rem;
-      border:1px solid var(--border);
+      outline:none;
+      padding:0 44px 0 14px;
+      font-size:.96rem;
       box-shadow:var(--shadow-soft);
-    }
-
-    .search-box input::placeholder{
-      color:var(--muted);
     }
 
     .search-icon{
       position:absolute;
+      right:14px;
       top:50%;
-      right:16px;
       transform:translateY(-50%);
-      width:28px;
-      height:28px;
-      opacity:.82;
+      width:20px;
+      height:20px;
+      opacity:.75;
       pointer-events:none;
     }
 
     .hero-side{
-      padding:22px;
       display:flex;
       flex-direction:column;
-      gap:16px;
       justify-content:space-between;
+      gap:14px;
     }
 
-    .mini-stats{
+    .mini-grid{
       display:grid;
       grid-template-columns:repeat(2,1fr);
-      gap:12px;
+      gap:10px;
     }
 
-    .stat{
+    .mini-box{
       background:var(--surface-2);
       border:1px solid var(--border);
-      border-radius:22px;
-      padding:18px 16px;
+      border-radius:18px;
+      padding:14px;
       box-shadow:var(--shadow-soft);
     }
 
-    .stat strong{
+    .mini-box strong{
       display:block;
-      font-size:1.55rem;
-      line-height:1;
-      margin-bottom:8px;
-    }
-
-    .stat span{
-      color:var(--muted);
-      font-size:.94rem;
-    }
-
-    .share-preview{
-      border-radius:24px;
-      overflow:hidden;
-      background:var(--surface-2);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow-soft);
-    }
-
-    .share-preview-top{
-      min-height:160px;
-      background:
-        linear-gradient(135deg, rgba(47,128,237,.95), rgba(86,204,242,.85)),
-        url('share.jpg') center/cover no-repeat;
-      display:flex;
-      align-items:flex-end;
-      padding:18px;
-      color:#fff;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .share-preview-top::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.35));
-    }
-
-    .share-preview-top h3{
-      margin:0;
-      position:relative;
-      z-index:1;
       font-size:1.2rem;
+      margin-bottom:4px;
     }
 
-    .share-preview-body{
-      padding:14px 16px;
+    .mini-box span{
       color:var(--muted);
-      line-height:1.8;
-      font-size:.95rem;
+      font-size:.88rem;
     }
 
     .section{
-      padding:12px 0 0;
+      padding:8px 0 0;
     }
 
     .section-head{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      margin-bottom:14px;
+      text-align:center;
+      margin-bottom:12px;
     }
 
-    .section-title{
+    .section-head h2{
       margin:0;
-      font-size:1.5rem;
+      font-size:clamp(1.6rem,3vw,2.4rem);
     }
 
-    .section-sub{
+    .section-head p{
+      margin:8px 0 0;
       color:var(--muted);
-      margin:6px 0 0;
-      font-size:.95rem;
+      font-size:.96rem;
     }
 
-    .player-layout{
+    .main-grid{
       display:grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap:22px;
+      grid-template-columns:.92fr 1.08fr;
+      gap:16px;
       align-items:start;
     }
 
-    .player-card, .list-card, .articles-card, .seo-card, .about-card{
-      padding:20px;
+    .card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:26px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+      padding:16px;
     }
 
-    .now-playing{
+    .player-head{
       display:flex;
-      gap:14px;
       align-items:center;
-      padding:16px;
-      border-radius:22px;
+      gap:12px;
+      padding:12px;
       background:var(--surface-2);
       border:1px solid var(--border);
+      border-radius:22px;
       box-shadow:var(--shadow-soft);
-      margin-bottom:16px;
     }
 
-    .reciter-avatar{
-      width:66px;
-      height:66px;
-      border-radius:18px;
-      background:linear-gradient(135deg, var(--primary), var(--primary-2));
+    .avatar{
+      width:68px;
+      height:68px;
+      border-radius:20px;
+      background:linear-gradient(135deg,var(--primary2),var(--primary));
+      color:#fff;
       display:grid;
       place-items:center;
-      color:#fff;
-      font-size:1.35rem;
+      font-size:1.85rem;
       font-weight:800;
-      box-shadow:0 12px 24px rgba(47,128,237,.18);
       flex-shrink:0;
     }
 
-    .now-text{
+    .player-head-text{
       min-width:0;
       flex:1;
     }
 
-    .now-text h3{
+    .player-head-text h3{
       margin:0;
-      color:var(--text);
       font-size:1.05rem;
+      color:var(--text);
     }
 
-    .now-text p{
-      margin:6px 0 0;
+    .player-head-text p{
+      margin:4px 0 0;
       color:var(--muted);
-      font-size:.92rem;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      font-size:.9rem;
+      line-height:1.8;
     }
 
     .progress-wrap{
-      margin:18px 0 12px;
+      margin-top:14px;
     }
 
-    .progress-bar{
-      height:12px;
-      width:100%;
+    .progress{
+      height:10px;
       border-radius:999px;
-      background:rgba(127, 156, 191, .18);
+      background:rgba(137,159,191,.18);
       overflow:hidden;
       position:relative;
     }
 
     .progress-fill{
-      width:34%;
+      width:0%;
       height:100%;
       border-radius:999px;
-      background:linear-gradient(90deg, var(--primary), var(--primary-2));
+      background:linear-gradient(90deg,var(--primary),var(--primary2));
+      transition:width .12s linear;
       position:relative;
     }
 
@@ -567,314 +393,257 @@
       left:100%;
       top:50%;
       transform:translate(-50%,-50%);
-      width:18px;
-      height:18px;
+      width:14px;
+      height:14px;
       border-radius:50%;
       background:#fff;
-      box-shadow:0 4px 12px rgba(0,0,0,.16);
+      box-shadow:0 4px 10px rgba(0,0,0,.15);
     }
 
     .time-row{
       display:flex;
       justify-content:space-between;
-      gap:12px;
-      color:var(--muted);
-      font-size:.9rem;
-      margin-top:10px;
       direction:ltr;
+      margin-top:8px;
+      color:var(--muted);
+      font-size:.86rem;
     }
 
     .controls{
       display:grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns:repeat(3,1fr);
       gap:10px;
-      margin-top:18px;
+      margin-top:14px;
     }
 
-    .control-btn{
-      height:54px;
+    .icon-btn{
+      height:58px;
       border-radius:18px;
-      border:none;
-      cursor:pointer;
-      background:var(--surface-2);
       border:1px solid var(--border);
-      box-shadow:var(--shadow-soft);
+      background:var(--surface-2);
       color:var(--text);
-      font-size:1rem;
-      transition:.22s ease;
+      cursor:pointer;
+      box-shadow:var(--shadow-soft);
+      font-size:1.12rem;
+      transition:.2s ease;
     }
 
-    .control-btn:hover{
+    .icon-btn:hover{
       transform:translateY(-2px);
     }
 
-    .control-btn.play{
-      background:linear-gradient(135deg, var(--primary), var(--primary-2));
+    .icon-btn.play{
+      background:linear-gradient(135deg,var(--primary),var(--primary2));
       color:#fff;
+      font-size:1.3rem;
       font-weight:800;
     }
 
-    .reciter-tags{
+    .tags{
       display:flex;
-      flex-wrap:wrap;
       gap:8px;
-      margin-top:16px;
+      flex-wrap:wrap;
+      margin-top:14px;
     }
 
-    .reciter-tag{
-      font-size:.84rem;
+    .tag{
       padding:8px 12px;
       border-radius:999px;
-      background:rgba(86,204,242,.12);
+      background:var(--chip);
+      border:1px solid var(--border);
       color:var(--primary);
-      border:1px solid rgba(86,204,242,.18);
+      font-size:.84rem;
     }
 
-    .suwar-list{
-      display:grid;
+    .suwar-top{
+      display:flex;
+      align-items:center;
       gap:10px;
-      max-height:680px;
+      margin-bottom:12px;
+      flex-wrap:wrap;
+    }
+
+    .suwar-top .search-box input{
+      height:46px;
+    }
+
+    .surah-list{
+      display:grid;
+      gap:9px;
+      max-height:690px;
       overflow:auto;
-      padding-right:4px;
+      padding-right:2px;
     }
 
     .surah-item{
       display:grid;
-      grid-template-columns: 58px 1fr auto;
-      gap:14px;
+      grid-template-columns:52px 1fr auto;
+      gap:12px;
       align-items:center;
-      padding:14px;
-      border-radius:20px;
+      padding:12px;
+      border-radius:18px;
       background:var(--surface-2);
       border:1px solid var(--border);
       box-shadow:var(--shadow-soft);
-      transition:.22s ease;
       cursor:pointer;
+      transition:.2s ease;
     }
 
     .surah-item:hover{
       transform:translateY(-2px);
     }
 
-    .surah-num{
-      width:58px;
-      height:58px;
-      border-radius:18px;
+    .surah-no{
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      background:linear-gradient(135deg,rgba(79,153,255,.18),rgba(92,205,247,.16));
+      color:var(--primary);
       display:grid;
       place-items:center;
-      background:linear-gradient(135deg, rgba(47,128,237,.12), rgba(86,204,242,.18));
-      color:var(--primary);
       font-weight:800;
-      font-size:1.05rem;
-      border:1px solid rgba(86,204,242,.18);
+      font-size:.96rem;
+      border:1px solid var(--border);
     }
 
     .surah-meta h3{
-      margin:0 0 4px;
-      font-size:1rem;
+      margin:0 0 2px;
+      font-size:.98rem;
       color:var(--text);
     }
 
     .surah-meta p{
       margin:0;
       color:var(--muted);
-      font-size:.9rem;
+      font-size:.86rem;
     }
 
-    .surah-side{
-      text-align:left;
+    .surah-type{
       color:var(--muted);
-      font-size:.9rem;
+      font-size:.84rem;
       white-space:nowrap;
     }
 
-    .articles-grid{
+    .articles{
+      margin-top:16px;
       display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:16px;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
     }
 
     .article{
-      background:var(--surface-2);
+      background:var(--surface);
       border:1px solid var(--border);
-      border-radius:24px;
+      border-radius:22px;
+      box-shadow:var(--shadow);
       overflow:hidden;
-      box-shadow:var(--shadow-soft);
-      transition:.22s ease;
-    }
-
-    .article:hover{
-      transform:translateY(-3px);
     }
 
     .article-cover{
-      height:170px;
-      background:
-        linear-gradient(135deg, rgba(47,128,237,.9), rgba(86,204,242,.85));
+      height:128px;
+      background:linear-gradient(135deg,var(--primary),var(--primary2));
       position:relative;
-      overflow:hidden;
-    }
-
-    .article-cover::before{
-      content:"";
-      position:absolute;
-      width:180px;
-      height:180px;
-      border-radius:50%;
-      background:rgba(255,255,255,.16);
-      top:-50px;
-      left:-30px;
     }
 
     .article-cover::after{
       content:"";
       position:absolute;
-      width:110px;
-      height:110px;
-      border-radius:24px;
-      background:rgba(255,255,255,.14);
-      bottom:-14px;
-      right:16px;
-      transform:rotate(18deg);
+      width:130px;
+      height:130px;
+      border-radius:50%;
+      background:rgba(255,255,255,.15);
+      top:-36px;
+      left:-18px;
     }
 
     .article-body{
-      padding:16px;
+      padding:14px;
     }
 
     .article-badge{
       display:inline-block;
-      margin-bottom:10px;
-      padding:7px 12px;
+      padding:6px 10px;
       border-radius:999px;
-      background:rgba(86,204,242,.12);
+      background:var(--chip);
       color:var(--primary);
-      font-size:.82rem;
+      font-size:.78rem;
       font-weight:700;
+      margin-bottom:8px;
     }
 
     .article h3{
-      margin:0 0 10px;
+      margin:0 0 8px;
+      font-size:.98rem;
       color:var(--text);
-      font-size:1.03rem;
       line-height:1.7;
     }
 
     .article p{
       margin:0;
       color:var(--muted);
-      font-size:.93rem;
-      line-height:1.9;
-    }
-
-    .seo-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:16px;
-    }
-
-    .seo-box{
-      background:var(--surface-2);
-      border:1px solid var(--border);
-      border-radius:22px;
-      padding:18px;
-      box-shadow:var(--shadow-soft);
-    }
-
-    .seo-box h3{
-      margin:0 0 8px;
-      color:var(--text);
-      font-size:1rem;
-    }
-
-    .seo-box p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.9;
-      font-size:.93rem;
-    }
-
-    .about-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:16px;
-    }
-
-    .about-box{
-      padding:18px;
-      border-radius:22px;
-      background:var(--surface-2);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow-soft);
-    }
-
-    .about-box h3{
-      margin:0 0 8px;
-      color:var(--text);
-      font-size:1rem;
-    }
-
-    .about-box p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.9;
-      font-size:.94rem;
+      font-size:.88rem;
+      line-height:1.85;
     }
 
     footer{
-      padding:26px 0 36px;
-      color:var(--muted);
+      padding:18px 0 30px;
     }
 
     .footer-card{
-      padding:18px 20px;
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      padding:14px 16px;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:14px;
+      gap:12px;
       flex-wrap:wrap;
     }
 
     .footer-links{
       display:flex;
-      gap:10px;
+      gap:8px;
       flex-wrap:wrap;
     }
 
     .footer-links a{
-      padding:10px 14px;
-      border-radius:14px;
+      padding:8px 12px;
+      border-radius:12px;
       background:var(--surface-2);
       border:1px solid var(--border);
       color:var(--text);
+      text-decoration:none;
+      font-size:.88rem;
     }
 
-    /* Toggle */
-    .theme-toggle-wrap{
+    /* Smaller smoother theme toggle */
+    .theme-wrap{
       display:flex;
       align-items:center;
-      gap:12px;
+      gap:8px;
     }
 
-    .theme-label{
+    .theme-text{
       color:var(--muted);
-      font-size:.92rem;
+      font-size:.88rem;
       font-weight:700;
     }
 
     .theme-toggle{
       position:relative;
-      width:190px;
-      height:82px;
+      width:118px;
+      height:52px;
       border:none;
-      cursor:pointer;
+      background:none;
       padding:0;
-      background:transparent;
-      transition:.3s ease;
+      cursor:pointer;
+      flex-shrink:0;
     }
 
     .theme-toggle:focus-visible{
-      outline:3px solid rgba(86,204,242,.4);
+      outline:3px solid rgba(91,190,247,.28);
       outline-offset:4px;
       border-radius:999px;
     }
@@ -884,267 +653,239 @@
       inset:0;
       border-radius:999px;
       overflow:hidden;
-      box-shadow: inset 0 0 0 2px rgba(255,255,255,.18), 0 8px 18px rgba(0,0,0,.16);
-      background:linear-gradient(90deg, var(--toggle-track1), var(--toggle-track2));
-      transition: .45s ease;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.08),
+        0 8px 18px rgba(0,0,0,.12);
+      transition:.45s ease;
+      background:linear-gradient(90deg,#78c4f5,#349bf3);
     }
 
     body.dark .toggle-track{
-      background:linear-gradient(90deg, var(--toggle-night1), var(--toggle-night2));
+      background:linear-gradient(90deg,#082848,#09192f);
     }
 
-    .toggle-day-bg, .toggle-night-bg{
+    .toggle-day,
+    .toggle-night{
       position:absolute;
       inset:0;
       transition:.45s ease;
     }
 
-    .toggle-day-bg{
+    .toggle-day{
       opacity:1;
       background:
-        radial-gradient(circle at 26% 50%, rgba(255,214,0,1) 0 20%, rgba(255,214,0,.92) 21%, rgba(255,214,0,0) 24%),
-        radial-gradient(circle at 34% 72%, var(--toggle-cloud) 0 10%, transparent 11%),
-        radial-gradient(circle at 44% 74%, #ddebf8 0 11%, transparent 12%),
-        radial-gradient(circle at 54% 76%, #d8e7f6 0 10%, transparent 11%),
-        radial-gradient(circle at 70% 70%, #eef6ff 0 12%, transparent 13%),
-        radial-gradient(circle at 82% 64%, #eef6ff 0 18%, transparent 19%),
-        radial-gradient(circle at 92% 54%, #eef6ff 0 15%, transparent 16%),
-        linear-gradient(180deg, #9bd1f6 0%, #4eb0f7 55%, #2d9cf3 100%);
+        radial-gradient(circle at 26% 50%, #ffd600 0 18%, transparent 19%),
+        radial-gradient(circle at 42% 74%, #eef7ff 0 8%, transparent 9%),
+        radial-gradient(circle at 52% 74%, #eef7ff 0 8%, transparent 9%),
+        radial-gradient(circle at 62% 73%, #eaf4ff 0 8%, transparent 9%),
+        linear-gradient(180deg,#91cdf7 0,#48aef5 55%,#2d98f3 100%);
     }
 
-    .toggle-night-bg{
+    .toggle-night{
       opacity:0;
       background:
-        radial-gradient(circle at 18% 18%, rgba(255,255,255,.9) 0 1.3%, transparent 1.5%),
-        radial-gradient(circle at 28% 52%, rgba(255,255,255,.9) 0 2.2%, transparent 2.4%),
-        radial-gradient(circle at 40% 24%, rgba(255,255,255,.9) 0 1.2%, transparent 1.4%),
-        radial-gradient(circle at 60% 56%, rgba(255,255,255,.9) 0 1.5%, transparent 1.7%),
-        radial-gradient(circle at 74% 22%, rgba(255,255,255,.85) 0 1.1%, transparent 1.3%),
-        radial-gradient(circle at 82% 46%, rgba(255,255,255,.86) 0 1.2%, transparent 1.4%),
-        linear-gradient(180deg, #072844 0%, #0b223e 40%, #122941 100%);
+        radial-gradient(circle at 24% 24%, rgba(255,255,255,.9) 0 1.5%, transparent 1.7%),
+        radial-gradient(circle at 40% 60%, rgba(255,255,255,.88) 0 2%, transparent 2.2%),
+        radial-gradient(circle at 60% 38%, rgba(255,255,255,.88) 0 1.3%, transparent 1.5%),
+        radial-gradient(circle at 78% 50%, rgba(255,255,255,.88) 0 1.6%, transparent 1.8%),
+        linear-gradient(180deg,#062342,#08172b);
     }
 
-    body.dark .toggle-day-bg{
+    body.dark .toggle-day{
       opacity:0;
     }
 
-    body.dark .toggle-night-bg{
+    body.dark .toggle-night{
       opacity:1;
     }
 
     .toggle-thumb{
       position:absolute;
-      top:7px;
-      right:8px;
-      width:68px;
-      height:68px;
+      top:5px;
+      right:5px;
+      width:42px;
+      height:42px;
       border-radius:50%;
-      background: radial-gradient(circle at 35% 35%, #fff 0%, #f9fbff 48%, #dbe6f7 100%);
+      background:radial-gradient(circle at 35% 35%,#fff,#e8f0fb 70%);
       box-shadow:
-        0 5px 12px rgba(0,0,0,.18),
-        inset -6px -6px 12px rgba(0,0,0,.06),
-        inset 6px 6px 10px rgba(255,255,255,.7);
-      transition: .45s cubic-bezier(.2,.8,.2,1);
-      display:flex;
-      align-items:center;
-      justify-content:center;
+        0 4px 10px rgba(0,0,0,.18),
+        inset -4px -4px 8px rgba(0,0,0,.05),
+        inset 4px 4px 8px rgba(255,255,255,.7);
+      transition:transform .48s cubic-bezier(.2,.8,.2,1), background .4s ease;
       overflow:hidden;
     }
 
     body.dark .toggle-thumb{
-      transform:translateX(-106px);
-      background: radial-gradient(circle at 35% 35%, #ffffff 0%, #eef3ff 55%, #d7dfef 100%);
+      transform:translateX(-66px);
+      background:radial-gradient(circle at 35% 35%,#fff,#dde7f7 75%);
     }
 
-    .sun-core, .moon-core{
+    .sun,
+    .moon{
       position:absolute;
       inset:0;
       display:grid;
       place-items:center;
-      transition:.45s ease;
+      transition:.4s ease;
     }
 
-    .sun-core::before{
+    .sun::before{
       content:"";
-      width:54px;
-      height:54px;
+      width:30px;
+      height:30px;
       border-radius:50%;
-      background: var(--toggle-sun);
-      box-shadow: 0 0 20px rgba(255,214,0,.55);
+      background:#ffd600;
+      box-shadow:0 0 12px rgba(255,214,0,.45);
     }
 
-    .moon-core{
+    .moon{
       opacity:0;
       transform:scale(.75);
     }
 
-    .moon-core::before{
+    .moon::before{
       content:"";
-      width:54px;
-      height:54px;
+      width:30px;
+      height:30px;
       border-radius:50%;
-      background: var(--toggle-moon);
-      box-shadow: 0 0 18px rgba(234,241,255,.45);
+      background:#eef3ff;
     }
 
-    .moon-core::after{
+    .moon::after{
       content:"";
       position:absolute;
-      width:19px;
-      height:19px;
+      width:10px;
+      height:10px;
       border-radius:50%;
-      background:#b7c5da;
-      top:16px;
-      left:38px;
+      background:#b6c3d8;
+      top:8px;
+      left:20px;
       box-shadow:
-        -18px 18px 0 8px #b7c5da,
-        20px 36px 0 2px #b7c5da;
-      opacity:.92;
+        -10px 10px 0 4px #b6c3d8,
+        10px 20px 0 1px #b6c3d8;
     }
 
-    body.dark .sun-core{
+    body.dark .sun{
       opacity:0;
       transform:scale(.75);
     }
 
-    body.dark .moon-core{
+    body.dark .moon{
       opacity:1;
       transform:scale(1);
     }
 
-    @media (max-width: 980px){
-      .hero-grid,
-      .player-layout,
-      .articles-grid,
-      .seo-grid,
-      .about-grid{
+    @media (max-width:980px){
+      .hero-card,
+      .main-grid,
+      .articles{
         grid-template-columns:1fr;
-      }
-
-      .topbar-inner{
-        align-items:flex-start;
-      }
-
-      .theme-toggle{
-        width:160px;
-        height:70px;
-      }
-
-      .toggle-thumb{
-        width:58px;
-        height:58px;
-      }
-
-      body.dark .toggle-thumb{
-        transform:translateX(-88px);
-      }
-
-      .sun-core::before,
-      .moon-core::before{
-        width:46px;
-        height:46px;
-      }
-
-      .moon-core::after{
-        width:16px;
-        height:16px;
-        top:13px;
-        left:33px;
-        box-shadow:
-          -15px 16px 0 7px #b7c5da,
-          18px 31px 0 2px #b7c5da;
       }
     }
 
-    @media (max-width: 760px){
+    @media (max-width:760px){
       .topbar-inner{
         flex-direction:column;
+        align-items:stretch;
       }
 
       .top-actions{
-        width:100%;
         justify-content:space-between;
       }
 
-      .mini-stats{
+      .mini-grid{
         grid-template-columns:1fr 1fr;
       }
 
-      .controls{
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .surah-item{
-        grid-template-columns: 52px 1fr;
-      }
-
-      .surah-side{
-        grid-column: 1 / -1;
-        text-align:right;
-      }
-
-      .footer-card{
-        flex-direction:column;
-        align-items:flex-start;
+      .articles{
+        grid-template-columns:1fr;
       }
     }
 
-    @media (max-width: 520px){
+    @media (max-width:560px){
       .container{
-        width:min(100% - 18px, 1180px);
+        width:min(100% - 14px,1100px);
       }
 
-      .hero-main,
-      .hero-side,
-      .player-card,
-      .list-card,
-      .articles-card,
-      .seo-card,
-      .about-card{
-        padding:16px;
+      .hero-card,
+      .card{
+        padding:13px;
+        border-radius:22px;
       }
 
-      .hero-title{
-        font-size:1.65rem;
+      .brand-logo{
+        width:48px;
+        height:48px;
       }
 
-      .search-box input{
-        height:54px;
+      .brand-text h1{
+        font-size:1.08rem;
       }
 
-      .theme-toggle-wrap{
-        width:100%;
-        justify-content:space-between;
+      .brand-text p{
+        font-size:.8rem;
+      }
+
+      .btn{
+        padding:10px 13px;
+        font-size:.9rem;
       }
 
       .theme-toggle{
-        width:142px;
-        height:62px;
+        width:108px;
+        height:48px;
       }
 
       .toggle-thumb{
-        width:50px;
-        height:50px;
+        width:38px;
+        height:38px;
       }
 
       body.dark .toggle-thumb{
-        transform:translateX(-80px);
+        transform:translateX(-60px);
       }
 
-      .sun-core::before,
-      .moon-core::before{
-        width:40px;
-        height:40px;
+      .sun::before,
+      .moon::before{
+        width:28px;
+        height:28px;
       }
 
-      .moon-core::after{
-        width:14px;
-        height:14px;
-        top:11px;
-        left:29px;
+      .moon::after{
+        width:8px;
+        height:8px;
+        top:8px;
+        left:18px;
         box-shadow:
-          -12px 14px 0 6px #b7c5da,
-          15px 27px 0 2px #b7c5da;
+          -9px 9px 0 4px #b6c3d8,
+          8px 17px 0 1px #b6c3d8;
+      }
+
+      .player-head{
+        padding:10px;
+      }
+
+      .avatar{
+        width:60px;
+        height:60px;
+        font-size:1.65rem;
+      }
+
+      .controls{
+        grid-template-columns:repeat(3,1fr);
+      }
+
+      .icon-btn{
+        height:54px;
+        font-size:1rem;
+      }
+
+      .surah-item{
+        grid-template-columns:48px 1fr;
+      }
+
+      .surah-type{
+        grid-column:1 / -1;
       }
     }
   </style>
@@ -1153,7 +894,7 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <a href="#" class="brand">
-        <div class="brand-logo" aria-hidden="true"></div>
+        <div class="brand-logo"></div>
         <div class="brand-text">
           <h1>القارئ</h1>
           <p>استمع إلى القرآن الكريم بواجهة أنيقة وحديثة</p>
@@ -1161,378 +902,250 @@
       </a>
 
       <div class="top-actions">
-        <div class="theme-toggle-wrap">
-          <span class="theme-label">الوضع</span>
-          <button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي والنهاري" title="تبديل الوضع الليلي والنهاري">
+        <div class="theme-wrap">
+          <span class="theme-text">الوضع</span>
+          <button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع">
             <span class="toggle-track">
-              <span class="toggle-day-bg"></span>
-              <span class="toggle-night-bg"></span>
+              <span class="toggle-day"></span>
+              <span class="toggle-night"></span>
             </span>
             <span class="toggle-thumb">
-              <span class="sun-core"></span>
-              <span class="moon-core"></span>
+              <span class="sun"></span>
+              <span class="moon"></span>
             </span>
           </button>
         </div>
 
-        <button class="link-btn" id="shareBtn">مشاركة الموقع</button>
-        <a class="action-btn" href="#playerSection">ابدأ الاستماع</a>
+        <button class="btn btn-secondary" id="shareBtn">مشاركة الموقع</button>
+        <a class="btn btn-primary" href="#listen">ابدأ الاستماع</a>
       </div>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container hero-grid">
-        <div class="glass-card hero-main">
-          <div class="eyebrow">واجهة حديثة • بحث سريع • وضع ليلي ونهاري</div>
-          <h2 class="hero-title">استمع إلى القرآن الكريم بأصوات أجمل القرّاء</h2>
-          <p class="hero-desc">
-            موقع القارئ يمنحك تجربة مريحة للاستماع إلى سور القرآن الكريم، مع تصميم أنيق، تنظيم أفضل، مقالات مفيدة، وتحسينات أساسية تساعد في ظهور الموقع بشكل أجمل في نتائج البحث والمشاركة.
-          </p>
+      <div class="container">
+        <div class="hero-card">
+          <div class="hero-content">
+            <span class="hero-badge">واجهة مرتبة • تشغيل فعلي • وضع سلس</span>
+            <h2 class="hero-title">استمع إلى القرآن الكريم بأصوات جميلة</h2>
+            <p class="hero-desc">
+              تصميم أخف وأرتب للجوال، مع زر وضع ليلي ونهاري بحجم أصغر وحركة سلسة، ومشغل مرتب مع قائمة سور قابلة للبحث.
+            </p>
 
-          <div class="hero-points">
-            <span class="chip">أكثر أناقة وترتيب</span>
-            <span class="chip">مناسب للجوال</span>
-            <span class="chip">شعار وهوية بصرية</span>
-            <span class="chip">صورة مشاركة</span>
-            <span class="chip">وضع ليلي ونهاري متحرك</span>
+            <div class="search-row">
+              <div class="search-box">
+                <input type="text" id="mainSearch" placeholder="ابحث عن سورة..." />
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none">
+                  <path d="M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <button class="btn btn-primary" id="mainSearchBtn">بحث</button>
+            </div>
           </div>
 
-          <div class="hero-search">
-            <div class="search-box">
-              <input id="searchInput" type="text" placeholder="ابحث عن سورة أو قارئ..." />
-              <svg class="search-icon" viewBox="0 0 24 24" fill="none">
-                <path d="M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2"/>
-                <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
+          <div class="hero-side">
+            <div class="mini-grid">
+              <div class="mini-box">
+                <strong>114</strong>
+                <span>سورة قرآنية</span>
+              </div>
+              <div class="mini-box">
+                <strong>صوت</strong>
+                <span>تشغيل واضح وسهل</span>
+              </div>
+              <div class="mini-box">
+                <strong>ليل/نهار</strong>
+                <span>حركة أنعم وأصغر</span>
+              </div>
+              <div class="mini-box">
+                <strong>مرتب</strong>
+                <span>مناسب أكثر للجوال</span>
+              </div>
             </div>
-            <button class="action-btn" id="searchBtn">بحث</button>
+
+            <button class="btn btn-secondary" id="heroShareBtn">نسخ رابط الموقع</button>
           </div>
         </div>
-
-        <aside class="glass-card hero-side">
-          <div class="mini-stats">
-            <div class="stat">
-              <strong>114</strong>
-              <span>سورة قرآنية</span>
-            </div>
-            <div class="stat">
-              <strong>+100</strong>
-              <span>قارئ وتلاوة</span>
-            </div>
-            <div class="stat">
-              <strong>سريع</strong>
-              <span>تنقل مريح وبحث واضح</span>
-            </div>
-            <div class="stat">
-              <strong>SEO</strong>
-              <span>تهيئة أساسية لمحركات البحث</span>
-            </div>
-          </div>
-
-          <div class="share-preview">
-            <div class="share-preview-top">
-              <h3>صورة جذابة عند مشاركة الموقع</h3>
-            </div>
-            <div class="share-preview-body">
-              تم تجهيز الصفحة بعناصر مشاركة أساسية مثل عنوان واضح ووصف وصورة مشاركة، حتى يظهر الرابط بشكل أجمل عند نشره.
-            </div>
-          </div>
-        </aside>
       </div>
     </section>
 
-    <section class="section" id="playerSection">
+    <section class="section" id="listen">
       <div class="container">
         <div class="section-head">
-          <div>
-            <h2 class="section-title">المشغل وقائمة السور</h2>
-            <p class="section-sub">تصميم مرتب مع مشغل واضح وقائمة أنيقة قابلة للبحث</p>
-          </div>
+          <h2>المشغل وقائمة السور</h2>
+          <p>تصميم مرتب مع مشغل واضح وقائمة أنيقة قابلة للبحث</p>
         </div>
 
-        <div class="player-layout">
-          <div class="glass-card player-card">
-            <div class="now-playing">
-              <div class="reciter-avatar">ق</div>
-              <div class="now-text">
-                <h3 id="nowPlayingTitle">سورة الفاتحة</h3>
-                <p id="nowPlayingMeta">القارئ: مشاري العفاسي • ٧ آيات • مكية</p>
+        <div class="main-grid">
+          <div class="card">
+            <div class="player-head">
+              <div class="avatar">ق</div>
+              <div class="player-head-text">
+                <h3 id="surahTitle">سورة الفاتحة</h3>
+                <p id="surahMeta">القارئ: مشاري العفاسي • ٧ آيات • مكية</p>
               </div>
             </div>
 
             <div class="progress-wrap">
-              <div class="progress-bar">
-                <div class="progress-fill"></div>
+              <div class="progress">
+                <div class="progress-fill" id="progressFill"></div>
               </div>
               <div class="time-row">
-                <span>00:00</span>
-                <span>-03:41</span>
+                <span id="currentTime">00:00</span>
+                <span id="durationTime">-00:00</span>
               </div>
             </div>
 
             <div class="controls">
-              <button class="control-btn" title="إعادة">↻</button>
-              <button class="control-btn" title="السابق">⏮</button>
-              <button class="control-btn play" title="تشغيل">▶</button>
-              <button class="control-btn" title="التالي">⏭</button>
-              <button class="control-btn" title="تحميل">⬇</button>
+              <button class="icon-btn play" id="playBtn" aria-label="تشغيل">▶</button>
+              <button class="icon-btn" id="prevBtn" aria-label="السابق">⏮</button>
+              <button class="icon-btn" id="repeatBtn" aria-label="إعادة">↻</button>
+              <button class="icon-btn" id="downloadBtn" aria-label="تحميل">⬇</button>
+              <button class="icon-btn" id="nextBtn" aria-label="التالي">⏭</button>
+              <button class="icon-btn" id="muteBtn" aria-label="كتم">🔇</button>
             </div>
 
-            <div class="reciter-tags">
-              <span class="reciter-tag">حفص عن عاصم</span>
-              <span class="reciter-tag">تلاوة مرتلة</span>
-              <span class="reciter-tag">صوت نقي</span>
+            <div class="tags">
+              <span class="tag">حفص عن عاصم</span>
+              <span class="tag">تلاوة مرتلة</span>
+              <span class="tag">صوت نقي</span>
             </div>
           </div>
 
-          <div class="glass-card list-card">
-            <div class="section-head" style="margin-bottom:12px;">
-              <div>
-                <h2 class="section-title" style="font-size:1.2rem;">السور</h2>
-                <p class="section-sub">اضغط على أي سورة لتحديث واجهة المشغل</p>
+          <div class="card">
+            <div class="suwar-top">
+              <div class="search-box">
+                <input type="text" id="surahSearch" placeholder="ابحث داخل السور..." />
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none">
+                  <path d="M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
               </div>
             </div>
 
-            <div class="suwar-list" id="surahList">
-              <div class="surah-item" data-title="الفاتحة" data-meta="القارئ: مشاري العفاسي • ٧ آيات • مكية">
-                <div class="surah-num">١</div>
+            <div class="surah-list" id="surahList">
+              <div class="surah-item" data-title="سورة الفاتحة" data-meta="القارئ: مشاري العفاسي • ٧ آيات • مكية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/001.mp3">
+                <div class="surah-no">١</div>
                 <div class="surah-meta">
                   <h3>الفاتحة</h3>
                   <p>٧ آيات • الجزء ١</p>
                 </div>
-                <div class="surah-side">مكية</div>
+                <div class="surah-type">مكية</div>
               </div>
 
-              <div class="surah-item" data-title="البقرة" data-meta="القارئ: مشاري العفاسي • ٢٨٦ آية • مدنية">
-                <div class="surah-num">٢</div>
+              <div class="surah-item" data-title="سورة البقرة" data-meta="القارئ: مشاري العفاسي • ٢٨٦ آية • مدنية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/002.mp3">
+                <div class="surah-no">٢</div>
                 <div class="surah-meta">
                   <h3>البقرة</h3>
                   <p>٢٨٦ آية • الجزء ١</p>
                 </div>
-                <div class="surah-side">مدنية</div>
+                <div class="surah-type">مدنية</div>
               </div>
 
-              <div class="surah-item" data-title="آل عمران" data-meta="القارئ: مشاري العفاسي • ٢٠٠ آية • مدنية">
-                <div class="surah-num">٣</div>
+              <div class="surah-item" data-title="سورة آل عمران" data-meta="القارئ: مشاري العفاسي • ٢٠٠ آية • مدنية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/003.mp3">
+                <div class="surah-no">٣</div>
                 <div class="surah-meta">
                   <h3>آل عمران</h3>
                   <p>٢٠٠ آية • الجزء ٣</p>
                 </div>
-                <div class="surah-side">مدنية</div>
+                <div class="surah-type">مدنية</div>
               </div>
 
-              <div class="surah-item" data-title="النساء" data-meta="القارئ: مشاري العفاسي • ١٧٦ آية • مدنية">
-                <div class="surah-num">٤</div>
+              <div class="surah-item" data-title="سورة النساء" data-meta="القارئ: مشاري العفاسي • ١٧٦ آية • مدنية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/004.mp3">
+                <div class="surah-no">٤</div>
                 <div class="surah-meta">
                   <h3>النساء</h3>
                   <p>١٧٦ آية • الجزء ٤</p>
                 </div>
-                <div class="surah-side">مدنية</div>
+                <div class="surah-type">مدنية</div>
               </div>
 
-              <div class="surah-item" data-title="المائدة" data-meta="القارئ: مشاري العفاسي • ١٢٠ آية • مدنية">
-                <div class="surah-num">٥</div>
+              <div class="surah-item" data-title="سورة المائدة" data-meta="القارئ: مشاري العفاسي • ١٢٠ آية • مدنية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/005.mp3">
+                <div class="surah-no">٥</div>
                 <div class="surah-meta">
                   <h3>المائدة</h3>
                   <p>١٢٠ آية • الجزء ٦</p>
                 </div>
-                <div class="surah-side">مدنية</div>
+                <div class="surah-type">مدنية</div>
               </div>
 
-              <div class="surah-item" data-title="الأنعام" data-meta="القارئ: مشاري العفاسي • ١٦٥ آية • مكية">
-                <div class="surah-num">٦</div>
+              <div class="surah-item" data-title="سورة الأنعام" data-meta="القارئ: مشاري العفاسي • ١٦٥ آية • مكية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/006.mp3">
+                <div class="surah-no">٦</div>
                 <div class="surah-meta">
                   <h3>الأنعام</h3>
                   <p>١٦٥ آية • الجزء ٧</p>
                 </div>
-                <div class="surah-side">مكية</div>
+                <div class="surah-type">مكية</div>
               </div>
 
-              <div class="surah-item" data-title="الأعراف" data-meta="القارئ: مشاري العفاسي • ٢٠٦ آية • مكية">
-                <div class="surah-num">٧</div>
+              <div class="surah-item" data-title="سورة الأعراف" data-meta="القارئ: مشاري العفاسي • ٢٠٦ آية • مكية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/007.mp3">
+                <div class="surah-no">٧</div>
                 <div class="surah-meta">
                   <h3>الأعراف</h3>
                   <p>٢٠٦ آية • الجزء ٨</p>
                 </div>
-                <div class="surah-side">مكية</div>
+                <div class="surah-type">مكية</div>
               </div>
 
-              <div class="surah-item" data-title="الأنفال" data-meta="القارئ: مشاري العفاسي • ٧٥ آية • مدنية">
-                <div class="surah-num">٨</div>
+              <div class="surah-item" data-title="سورة الأنفال" data-meta="القارئ: مشاري العفاسي • ٧٥ آية • مدنية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/008.mp3">
+                <div class="surah-no">٨</div>
                 <div class="surah-meta">
                   <h3>الأنفال</h3>
                   <p>٧٥ آية • الجزء ٩</p>
                 </div>
-                <div class="surah-side">مدنية</div>
+                <div class="surah-type">مدنية</div>
               </div>
 
-              <div class="surah-item" data-title="التوبة" data-meta="القارئ: مشاري العفاسي • ١٢٩ آية • مدنية">
-                <div class="surah-num">٩</div>
+              <div class="surah-item" data-title="سورة التوبة" data-meta="القارئ: مشاري العفاسي • ١٢٩ آية • مدنية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/009.mp3">
+                <div class="surah-no">٩</div>
                 <div class="surah-meta">
                   <h3>التوبة</h3>
                   <p>١٢٩ آية • الجزء ١٠</p>
                 </div>
-                <div class="surah-side">مدنية</div>
+                <div class="surah-type">مدنية</div>
               </div>
 
-              <div class="surah-item" data-title="يونس" data-meta="القارئ: مشاري العفاسي • ١٠٩ آية • مكية">
-                <div class="surah-num">١٠</div>
+              <div class="surah-item" data-title="سورة يونس" data-meta="القارئ: مشاري العفاسي • ١٠٩ آية • مكية" data-audio="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/010.mp3">
+                <div class="surah-no">١٠</div>
                 <div class="surah-meta">
                   <h3>يونس</h3>
                   <p>١٠٩ آية • الجزء ١١</p>
                 </div>
-                <div class="surah-side">مكية</div>
-              </div>
-
-              <div class="surah-item" data-title="هود" data-meta="القارئ: مشاري العفاسي • ١٢٣ آية • مكية">
-                <div class="surah-num">١١</div>
-                <div class="surah-meta">
-                  <h3>هود</h3>
-                  <p>١٢٣ آية • الجزء ١١</p>
-                </div>
-                <div class="surah-side">مكية</div>
-              </div>
-
-              <div class="surah-item" data-title="يوسف" data-meta="القارئ: مشاري العفاسي • ١١١ آية • مكية">
-                <div class="surah-num">١٢</div>
-                <div class="surah-meta">
-                  <h3>يوسف</h3>
-                  <p>١١١ آية • الجزء ١٢</p>
-                </div>
-                <div class="surah-side">مكية</div>
+                <div class="surah-type">مكية</div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2 class="section-title">مقالات مفيدة</h2>
-            <p class="section-sub">وجود مقالات داخل الموقع يساعد في تقديم محتوى أفضل للمستخدم ويقوّي الموقع مع الوقت</p>
-          </div>
-        </div>
+        <div class="articles">
+          <article class="article">
+            <div class="article-cover"></div>
+            <div class="article-body">
+              <span class="article-badge">مقالة</span>
+              <h3>كيف تجعل الاستماع للقرآن عادة يومية؟</h3>
+              <p>تنظيم بسيط للوقت واختيار قارئ مناسب يساعدك على الثبات والاستمرار براحة.</p>
+            </div>
+          </article>
 
-        <div class="glass-card articles-card">
-          <div class="articles-grid">
-            <article class="article">
-              <div class="article-cover"></div>
-              <div class="article-body">
-                <span class="article-badge">مقالة</span>
-                <h3>كيف تجعل الاستماع إلى القرآن عادة يومية مريحة وثابتة؟</h3>
-                <p>
-                  خطوات بسيطة لتنظيم وقتك، اختيار القارئ المناسب، وبناء عادة يومية هادئة تساعدك على الاستمرار دون انقطاع.
-                </p>
-              </div>
-            </article>
+          <article class="article">
+            <div class="article-cover"></div>
+            <div class="article-body">
+              <span class="article-badge">دليل</span>
+              <h3>ما الفرق بين التلاوة المرتلة والمجودة؟</h3>
+              <p>شرح مبسط يساعد الزائر على فهم نوع التلاوة واختيار ما يناسبه بسهولة.</p>
+            </div>
+          </article>
 
-            <article class="article">
-              <div class="article-cover"></div>
-              <div class="article-body">
-                <span class="article-badge">دليل</span>
-                <h3>ما الفرق بين التلاوة المرتلة والمجودة؟ ومتى تختار كل واحدة؟</h3>
-                <p>
-                  شرح مبسط لأنواع التلاوات المعروفة، وكيف تختار النمط المناسب للحفظ أو التدبر أو الاستماع العام.
-                </p>
-              </div>
-            </article>
-
-            <article class="article">
-              <div class="article-cover"></div>
-              <div class="article-body">
-                <span class="article-badge">مقالة</span>
-                <h3>أفضل طرق البحث عن السور والقراء داخل مواقع القرآن</h3>
-                <p>
-                  تنظيم نتائج البحث، كتابة أسماء السور بشكل صحيح، وإضافة فلاتر مفيدة تجعل تجربة المستخدم أسرع وأوضح.
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2 class="section-title">أشياء مهمة لكوكل ومحركات البحث</h2>
-            <p class="section-sub">هذه عناصر مفيدة للموقع من ناحية الشكل والظهور والتنظيم</p>
-          </div>
-        </div>
-
-        <div class="glass-card seo-card">
-          <div class="seo-grid">
-            <div class="seo-box">
-              <h3>عنوان ووصف واضحان</h3>
-              <p>
-                تم وضع عنوان قوي ووصف مناسب للموقع، حتى يظهر بشكل أجمل في نتائج البحث ويعرف الزائر مباشرة وظيفة الصفحة.
-              </p>
+          <article class="article">
+            <div class="article-cover"></div>
+            <div class="article-body">
+              <span class="article-badge">مفيد</span>
+              <h3>أفضل طريقة لترتيب السور والقراء داخل الموقع</h3>
+              <p>تنظيم جيد يرفع من جمال الواجهة ويجعل الوصول للمحتوى أسرع وأسهل.</p>
             </div>
-            <div class="seo-box">
-              <h3>صورة عند المشاركة</h3>
-              <p>
-                تمت إضافة وسوم المشاركة مثل Open Graph وTwitter Card حتى يظهر الرابط بصورة وعنوان ووصف عند نشره.
-              </p>
-            </div>
-            <div class="seo-box">
-              <h3>أيقونة للموقع</h3>
-              <p>
-                تم تجهيز favicon حتى يظهر للموقع رمز في التبويب وبعض الأماكن المرتبطة بالبحث أو الحفظ.
-              </p>
-            </div>
-            <div class="seo-box">
-              <h3>بيانات منظمة</h3>
-              <p>
-                أضفنا Schema بصيغة JSON-LD لتعريف الموقع والتنظيم الأساسي، وهذا مفيد لفهم الصفحة من محركات البحث.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2 class="section-title">عن الموقع</h2>
-            <p class="section-sub">أقسام ثابتة مفيدة تنظيميًا واحترافيًا</p>
-          </div>
-        </div>
-
-        <div class="glass-card about-card">
-          <div class="about-grid">
-            <div class="about-box">
-              <h3>من نحن</h3>
-              <p>
-                موقع القارئ يهدف إلى تقديم تجربة حديثة ومريحة للاستماع إلى القرآن الكريم مع تنظيم بصري أجمل وسهولة أكبر في الوصول إلى السور والقراء.
-              </p>
-            </div>
-            <div class="about-box">
-              <h3>سياسة الخصوصية</h3>
-              <p>
-                نحترم خصوصية الزائر، ونسعى لتقديم تجربة بسيطة وآمنة وواضحة، مع استخدام أقل قدر ممكن من البيانات غير الضرورية.
-              </p>
-            </div>
-            <div class="about-box">
-              <h3>اتصل بنا</h3>
-              <p>
-                يمكنك إضافة بريدك الإلكتروني أو نموذج تواصل أو روابط حساباتك الاجتماعية داخل هذا القسم بالشكل الذي تريده لاحقًا.
-              </p>
-            </div>
-            <div class="about-box">
-              <h3>ملاحظات تطويرية</h3>
-              <p>
-                هذا الملف مجهز كأساس قوي وجميل، ويمكن بعده ربط التشغيل الحقيقي، التلاوات الكاملة، البحث الديناميكي، وقاعدة بيانات السور والقراء.
-              </p>
-            </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -1540,7 +1153,7 @@
 
   <footer>
     <div class="container">
-      <div class="glass-card footer-card">
+      <div class="footer-card">
         <div>© 2026 القارئ - جميع الحقوق محفوظة</div>
         <div class="footer-links">
           <a href="#">من نحن</a>
@@ -1551,78 +1164,216 @@
     </div>
   </footer>
 
+  <audio id="audioPlayer" preload="metadata">
+    <source src="https://download.quranicaudio.com/qdc/mishari_al_afasy/murattal/001.mp3" type="audio/mpeg">
+  </audio>
+
   <script>
     const body = document.body;
     const themeToggle = document.getElementById('themeToggle');
     const themeColorMeta = document.getElementById('themeColorMeta');
-    const searchInput = document.getElementById('searchInput');
-    const surahList = document.getElementById('surahList');
-    const nowPlayingTitle = document.getElementById('nowPlayingTitle');
-    const nowPlayingMeta = document.getElementById('nowPlayingMeta');
+
     const shareBtn = document.getElementById('shareBtn');
-    const searchBtn = document.getElementById('searchBtn');
+    const heroShareBtn = document.getElementById('heroShareBtn');
+
+    const mainSearch = document.getElementById('mainSearch');
+    const mainSearchBtn = document.getElementById('mainSearchBtn');
+    const surahSearch = document.getElementById('surahSearch');
+    const surahList = document.getElementById('surahList');
+
+    const surahTitle = document.getElementById('surahTitle');
+    const surahMeta = document.getElementById('surahMeta');
+
+    const audioPlayer = document.getElementById('audioPlayer');
+    const playBtn = document.getElementById('playBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const repeatBtn = document.getElementById('repeatBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const muteBtn = document.getElementById('muteBtn');
+
+    const progressFill = document.getElementById('progressFill');
+    const currentTimeEl = document.getElementById('currentTime');
+    const durationTimeEl = document.getElementById('durationTime');
+
+    let repeatEnabled = false;
+    let currentIndex = 0;
+    let surahItems = Array.from(document.querySelectorAll('.surah-item'));
 
     const savedTheme = localStorage.getItem('qarie-theme');
-    if (savedTheme === 'dark') {
+    if(savedTheme === 'dark'){
       body.classList.add('dark');
-      themeColorMeta.setAttribute('content', '#06101d');
-    } else {
-      themeColorMeta.setAttribute('content', '#0f172a');
-    }
-
-    function setTheme(isDark){
-      body.classList.toggle('dark', isDark);
-      localStorage.setItem('qarie-theme', isDark ? 'dark' : 'light');
-      themeColorMeta.setAttribute('content', isDark ? '#06101d' : '#0f172a');
+      themeColorMeta.setAttribute('content', '#03101e');
     }
 
     themeToggle.addEventListener('click', () => {
-      setTheme(!body.classList.contains('dark'));
+      body.classList.toggle('dark');
+      const isDark = body.classList.contains('dark');
+      localStorage.setItem('qarie-theme', isDark ? 'dark' : 'light');
+      themeColorMeta.setAttribute('content', isDark ? '#03101e' : '#071427');
     });
+
+    function formatTime(seconds){
+      if (isNaN(seconds)) return '00:00';
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+    }
+
+    function updatePlayButton(){
+      playBtn.textContent = audioPlayer.paused ? '▶' : '⏸';
+    }
+
+    function loadSurah(index, autoPlay = false){
+      if(index < 0) index = surahItems.length - 1;
+      if(index >= surahItems.length) index = 0;
+
+      currentIndex = index;
+      const item = surahItems[currentIndex];
+      const title = item.dataset.title;
+      const meta = item.dataset.meta;
+      const audio = item.dataset.audio;
+
+      surahTitle.textContent = title;
+      surahMeta.textContent = meta;
+      audioPlayer.src = audio;
+      audioPlayer.load();
+
+      if(autoPlay){
+        audioPlayer.play().then(() => {
+          updatePlayButton();
+        }).catch(() => {
+          updatePlayButton();
+        });
+      } else {
+        updatePlayButton();
+      }
+    }
+
+    playBtn.addEventListener('click', () => {
+      if(audioPlayer.paused){
+        audioPlayer.play().then(updatePlayButton).catch(() => {
+          alert('تعذر تشغيل الصوت. تأكد من الرابط أو جرّب الضغط مرة ثانية.');
+        });
+      } else {
+        audioPlayer.pause();
+        updatePlayButton();
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      loadSurah(currentIndex - 1, true);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      loadSurah(currentIndex + 1, true);
+    });
+
+    repeatBtn.addEventListener('click', () => {
+      repeatEnabled = !repeatEnabled;
+      audioPlayer.loop = repeatEnabled;
+      repeatBtn.style.background = repeatEnabled
+        ? 'linear-gradient(135deg, var(--primary), var(--primary2))'
+        : 'var(--surface-2)';
+      repeatBtn.style.color = repeatEnabled ? '#fff' : 'var(--text)';
+    });
+
+    muteBtn.addEventListener('click', () => {
+      audioPlayer.muted = !audioPlayer.muted;
+      muteBtn.textContent = audioPlayer.muted ? '🔊' : '🔇';
+    });
+
+    downloadBtn.addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.href = audioPlayer.src;
+      link.download = '';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    });
+
+    audioPlayer.addEventListener('timeupdate', () => {
+      if(audioPlayer.duration){
+        const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        progressFill.style.width = progress + '%';
+        currentTimeEl.textContent = formatTime(audioPlayer.currentTime);
+        durationTimeEl.textContent = '-' + formatTime(audioPlayer.duration - audioPlayer.currentTime);
+      }
+    });
+
+    audioPlayer.addEventListener('loadedmetadata', () => {
+      currentTimeEl.textContent = formatTime(0);
+      durationTimeEl.textContent = '-' + formatTime(audioPlayer.duration);
+    });
+
+    audioPlayer.addEventListener('ended', () => {
+      if(!repeatEnabled){
+        loadSurah(currentIndex + 1, true);
+      }
+      updatePlayButton();
+    });
+
+    audioPlayer.addEventListener('pause', updatePlayButton);
+    audioPlayer.addEventListener('play', updatePlayButton);
 
     surahList.addEventListener('click', (e) => {
       const item = e.target.closest('.surah-item');
-      if (!item) return;
-      nowPlayingTitle.textContent = item.dataset.title || 'سورة';
-      nowPlayingMeta.textContent = item.dataset.meta || '';
+      if(!item) return;
+
+      const visibleItems = Array.from(document.querySelectorAll('.surah-item')).filter(el => el.style.display !== 'none');
+      const clickedIndex = surahItems.indexOf(item);
+      if(clickedIndex !== -1){
+        loadSurah(clickedIndex, true);
+      }
     });
 
-    function doSearch(){
-      const value = searchInput.value.trim().toLowerCase();
-      const items = document.querySelectorAll('.surah-item');
-
-      items.forEach(item => {
+    function filterSurahs(value){
+      const q = value.trim().toLowerCase();
+      surahItems.forEach(item => {
         const title = item.dataset.title.toLowerCase();
-        item.style.display = title.includes(value) ? '' : 'none';
+        const text = item.innerText.toLowerCase();
+        item.style.display = (title.includes(q) || text.includes(q)) ? '' : 'none';
       });
     }
 
-    searchInput.addEventListener('input', doSearch);
-    searchBtn.addEventListener('click', doSearch);
+    surahSearch.addEventListener('input', (e) => filterSurahs(e.target.value));
+    mainSearch.addEventListener('input', (e) => {
+      filterSurahs(e.target.value);
+      surahSearch.value = e.target.value;
+    });
 
-    shareBtn.addEventListener('click', async () => {
-      const shareData = {
+    mainSearchBtn.addEventListener('click', () => {
+      filterSurahs(mainSearch.value);
+      document.getElementById('listen').scrollIntoView({behavior:'smooth'});
+    });
+
+    async function shareSite(btn){
+      const data = {
         title: 'القارئ | استمع إلى القرآن الكريم',
-        text: 'موقع أنيق للاستماع إلى القرآن الكريم مع وضع ليلي ونهاري ومقالات مفيدة.',
+        text: 'موقع أنيق للاستماع إلى القرآن الكريم.',
         url: window.location.href
       };
 
-      if (navigator.share) {
-        try {
-          await navigator.share(shareData);
-        } catch (err) {}
-      } else {
-        try {
+      if(navigator.share){
+        try{
+          await navigator.share(data);
+        }catch(e){}
+      }else{
+        try{
           await navigator.clipboard.writeText(window.location.href);
-          shareBtn.textContent = 'تم نسخ الرابط';
-          setTimeout(() => {
-            shareBtn.textContent = 'مشاركة الموقع';
-          }, 1800);
-        } catch (err) {
-          alert('تعذر النسخ أو المشاركة');
+          const old = btn.textContent;
+          btn.textContent = 'تم نسخ الرابط';
+          setTimeout(() => btn.textContent = old, 1600);
+        }catch(e){
+          alert('تعذر النسخ');
         }
       }
-    });
+    }
+
+    shareBtn.addEventListener('click', () => shareSite(shareBtn));
+    heroShareBtn.addEventListener('click', () => shareSite(heroShareBtn));
+
+    loadSurah(0, false);
   </script>
 </body>
-                </html>
+</html>
