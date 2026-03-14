@@ -1,82 +1,76 @@
-const body = document.body;
 const themeToggle = document.getElementById("themeToggle");
 const themeColorMeta = document.getElementById("themeColorMeta");
-
 const shareBtn = document.getElementById("shareBtn");
-const heroShareBtn = document.getElementById("heroShareBtn");
-const openReaderBtn = document.getElementById("openReaderBtn");
-
-const mainSearch = document.getElementById("mainSearch");
-const mainSearchBtn = document.getElementById("mainSearchBtn");
 
 const reciterSelect = document.getElementById("reciterSelect");
-const readerReciterSelect = document.getElementById("readerReciterSelect");
-const listenModeSelect = document.getElementById("listenModeSelect");
-
-const surahTitle = document.getElementById("surahTitle");
-const surahMeta = document.getElementById("surahMeta");
-
-const surahSearch = document.getElementById("surahSearch");
-const surahSearchBtn = document.getElementById("surahSearchBtn");
+const surahSelect = document.getElementById("surahSelect");
+const surahSearchInput = document.getElementById("surahSearchInput");
+const clearSearchBtn = document.getElementById("clearSearchBtn");
 const surahList = document.getElementById("surahList");
 
-const ayahSearchInput = document.getElementById("ayahSearchInput");
-const ayahSearchBtn = document.getElementById("ayahSearchBtn");
-const ayahResults = document.getElementById("ayahResults");
-
-const readerSurahSelect = document.getElementById("readerSurahSelect");
-const readerLoadBtn = document.getElementById("readerLoadBtn");
-const readerContent = document.getElementById("readerContent");
-
-const startMicBtn = document.getElementById("startMicBtn");
-const stopMicBtn = document.getElementById("stopMicBtn");
-const micStatus = document.getElementById("micStatus");
-
-const audioPlayer = document.getElementById("audioPlayer");
-const ayahAudioPlayer = document.getElementById("ayahAudioPlayer");
+const nowTitle = document.getElementById("nowTitle");
+const nowMeta = document.getElementById("nowMeta");
+const startListenBtn = document.getElementById("startListenBtn");
+const statusBox = document.getElementById("statusBox");
 
 const progressBar = document.getElementById("progressBar");
 const progressFill = document.getElementById("progressFill");
-const currentTimeEl = document.getElementById("currentTime");
-const durationTimeEl = document.getElementById("durationTime");
+const currentTime = document.getElementById("currentTime");
+const durationTime = document.getElementById("durationTime");
 
-const playBtn = document.getElementById("playBtn");
 const prevBtn = document.getElementById("prevBtn");
+const playPauseBtn = document.getElementById("playPauseBtn");
 const nextBtn = document.getElementById("nextBtn");
 const repeatBtn = document.getElementById("repeatBtn");
-const downloadBtn = document.getElementById("downloadBtn");
 const muteBtn = document.getElementById("muteBtn");
+const downloadBtn = document.getElementById("downloadBtn");
 
-const API_BASE = "https://api.alquran.cloud/v1";
+const audioPlayer = document.getElementById("audioPlayer");
 
-const appState = {
+const state = {
   surahs: [],
+  filteredSurahs: [],
   reciters: [],
-  currentSurahIndex: 0,
-  currentReciter: "",
-  currentReaderSurah: 1,
-  repeatEnabled: false,
-  micRecognition: null,
-  currentReaderAyahs: []
+  currentSurahId: 1,
+  currentReciterId: null,
+  currentAudioUrl: "",
+  repeat: false
 };
 
-const COMMON_RECITERS_PRIORITY = [
-  "ar.alafasy",
-  "ar.abdurrahmaansudais",
-  "ar.mahermuaiqly",
-  "ar.minshawi",
-  "ar.husary",
-  "ar.hudhaify",
-  "ar.shaatree",
-  "ar.ahmedajamy",
-  "ar.saoodshuraym",
-  "ar.abdulbasitmurattal",
-  "ar.abdulbasitmujawwad",
-  "ar.muhammadayyoub",
-  "ar.muhammadjibreel",
-  "ar.abdullahbasfar",
-  "ar.yasserdossari",
-  "ar.faresabbad"
+const SURAHS_API = "https://www.mp3quran.net/api/v3/suwar?language=ar";
+const RECITERS_API = "https://www.mp3quran.net/api/v3/reciters?language=ar";
+
+const preferredReciters = [
+  { display: "مشاري العفاسي", keys: ["مشاري", "العفاسي"] },
+  { display: "ماهر المعيقلي", keys: ["ماهر", "المعيقلي"] },
+  { display: "محمد صديق المنشاوي", keys: ["محمد", "المنشاوي"] },
+  { display: "عبد الباسط عبد الصمد", keys: ["عبد", "الباسط"] },
+  { display: "عبد الرحمن السديس", keys: ["عبد", "الرحمن", "السديس"] },
+  { display: "سعود الشريم", keys: ["سعود", "الشريم"] },
+  { display: "فارس عباد", keys: ["فارس", "عباد"] },
+  { display: "أحمد العجمي", keys: ["احمد", "العجمي"] },
+  { display: "ياسر الدوسري", keys: ["ياسر", "الدوسري"] },
+  { display: "ناصر القطامي", keys: ["ناصر", "القطامي"] },
+  { display: "إدريس أبكر", keys: ["ادريس", "ابكر"] },
+  { display: "هاني الرفاعي", keys: ["هاني", "الرفاعي"] },
+  { display: "محمد أيوب", keys: ["محمد", "ايوب"] },
+  { display: "علي الحذيفي", keys: ["علي", "الحذيفي"] },
+  { display: "صلاح البدير", keys: ["صلاح", "البدير"] },
+  { display: "محمد الطبلاوي", keys: ["محمد", "الطبلاوي"] },
+  { display: "محمد جبريل", keys: ["محمد", "جبريل"] },
+  { display: "عبد الله بصفر", keys: ["عبد", "الله", "بصفر"] },
+  { display: "إبراهيم الأخضر", keys: ["ابراهيم", "الاخضر"] },
+  { display: "عبد الله الجهني", keys: ["عبد", "الله", "الجهني"] },
+  { display: "أبو بكر الشاطري", keys: ["ابو", "بكر", "الشاطري"] },
+  { display: "توفيق الصايغ", keys: ["توفيق", "الصايغ"] },
+  { display: "بندر بليلة", keys: ["بندر", "بليله"] },
+  { display: "خالد الجليل", keys: ["خالد", "الجليل"] },
+  { display: "عبد الله خياط", keys: ["عبد", "الله", "خياط"] },
+  { display: "محمد اللحيدان", keys: ["محمد", "اللحيدان"] },
+  { display: "محمود خليل الحصري", keys: ["محمود", "الحصري"] },
+  { display: "أحمد النفيس", keys: ["احمد", "النفيس"] },
+  { display: "هزاع البلوشي", keys: ["هزاع", "البلوشي"] },
+  { display: "عبد الله كامل", keys: ["عبد", "الله", "كامل"] }
 ];
 
 function normalizeArabic(text = "") {
@@ -95,694 +89,416 @@ function normalizeArabic(text = "") {
     .trim();
 }
 
-function escapeHtml(text = "") {
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
-}
-
 function pad3(num) {
   return String(num).padStart(3, "0");
 }
 
 function formatTime(seconds) {
-  if (!isFinite(seconds) || Number.isNaN(seconds)) return "00:00";
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+  if (!Number.isFinite(seconds)) return "00:00";
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+}
+
+function setStatus(text, ok = false) {
+  statusBox.textContent = text;
+  statusBox.classList.toggle("ok", ok);
 }
 
 function setTheme(isDark) {
-  body.classList.toggle("dark", isDark);
-  localStorage.setItem("qarie-theme", isDark ? "dark" : "light");
-  themeColorMeta.setAttribute("content", isDark ? "#03101e" : "#071427");
+  document.body.classList.toggle("dark", isDark);
+  localStorage.setItem("qaree-theme", isDark ? "dark" : "light");
+  themeColorMeta.setAttribute("content", isDark ? "#061221" : "#edf2f9");
 }
 
-function initializeTheme() {
-  const savedTheme = localStorage.getItem("qarie-theme");
-  setTheme(savedTheme === "dark");
+function initTheme() {
+  const saved = localStorage.getItem("qaree-theme");
+  setTheme(saved === "dark");
 }
 
-function showMessage(container, message, type = "placeholder") {
-  const className =
-    type === "error"
-      ? "error-box"
-      : type === "success"
-      ? "success-box"
-      : "placeholder-box";
-  container.innerHTML = `<div class="${className}">${escapeHtml(message)}</div>`;
-}
-
-async function fetchJson(url) {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Request failed: ${response.status}`);
-  }
-  return response.json();
-}
-
-function scoreTextMatch(query, candidate) {
+function scoreCandidate(query, text) {
   const q = normalizeArabic(query);
-  const c = normalizeArabic(candidate);
+  const t = normalizeArabic(text);
 
   if (!q) return 0;
-  if (!c) return 9999;
-  if (c === q) return 0;
-  if (c.startsWith(q)) return 1;
-  if (c.includes(q)) return 2;
+  if (!t) return 9999;
+  if (t === q) return 0;
+  if (t.startsWith(q)) return 1;
+  if (t.includes(q)) return 2;
 
   let score = 10;
   const qWords = q.split(" ").filter(Boolean);
-  const cWords = c.split(" ").filter(Boolean);
-
-  for (const qw of qWords) {
-    if (cWords.some(cw => cw.startsWith(qw))) score -= 1;
-    else if (c.includes(qw)) score -= 0.5;
+  for (const word of qWords) {
+    if (t.includes(word)) score -= 1;
   }
-
-  score += Math.abs(c.length - q.length) / 10;
+  score += Math.abs(t.length - q.length) / 10;
   return score;
 }
 
-function findClosestSurahs(query, limit = 20) {
-  const q = normalizeArabic(query);
-  if (!q) return appState.surahs.slice(0, limit);
+async function getJson(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+}
 
-  return [...appState.surahs]
-    .map(surah => {
-      const title = surah.name || "";
-      const simple = surah.englishName || "";
-      const allText = `${title} ${simple} ${surah.englishNameTranslation || ""}`;
-      return {
-        surah,
-        score: scoreTextMatch(q, allText)
-      };
-    })
-    .sort((a, b) => a.score - b.score)
-    .slice(0, limit)
-    .map(item => item.surah);
+function ensureSlash(url) {
+  return url.endsWith("/") ? url : `${url}/`;
+}
+
+function buildAudioUrl(server, surahId) {
+  return `${ensureSlash(server)}${pad3(surahId)}.mp3`;
+}
+
+function findSurahById(id) {
+  return state.surahs.find(s => Number(s.id) === Number(id));
+}
+
+function renderSurahOptions() {
+  surahSelect.innerHTML = state.surahs
+    .map(s => `<option value="${s.id}">${s.id} - ${s.name}</option>`)
+    .join("");
+
+  surahSelect.value = String(state.currentSurahId);
+}
+
+function renderReciterOptions() {
+  reciterSelect.innerHTML = state.reciters
+    .map(r => `<option value="${r.id}">${r.displayName}</option>`)
+    .join("");
+
+  if (!state.currentReciterId && state.reciters.length) {
+    state.currentReciterId = state.reciters[0].id;
+  }
+
+  reciterSelect.value = String(state.currentReciterId);
 }
 
 function renderSurahList(list) {
   if (!list.length) {
-    surahList.innerHTML = `<div class="empty-state">لا توجد نتائج</div>`;
+    surahList.innerHTML = `<div class="list-loading">لا توجد نتائج</div>`;
     return;
   }
 
-  surahList.innerHTML = list
-    .map(surah => {
-      const active = appState.currentSurahIndex === (surah.number - 1) ? "active" : "";
-      return `
-        <div class="surah-item ${active}" data-surah-number="${surah.number}">
-          <div class="surah-no">${surah.number}</div>
-          <div class="surah-meta">
-            <h3>${escapeHtml(surah.name)}</h3>
-            <p>${surah.numberOfAyahs} آية • ${escapeHtml(surah.englishName || "")}</p>
-          </div>
-          <div class="surah-type">${surah.revelationType === "Meccan" ? "مكية" : "مدنية"}</div>
+  surahList.innerHTML = list.map(surah => {
+    const active = Number(surah.id) === Number(state.currentSurahId) ? "active" : "";
+    return `
+      <div class="surah-item ${active}" data-id="${surah.id}">
+        <div class="surah-num">${surah.id}</div>
+        <div class="surah-body">
+          <h4>${surah.name}</h4>
+          <p>${surah.start_page ? `الصفحة ${surah.start_page}` : "سورة قرآنية"}</p>
         </div>
-      `;
-    })
-    .join("");
+        <div class="surah-end">${surah.type || ""}</div>
+      </div>
+    `;
+  }).join("");
 }
 
-function populateSurahSelects() {
-  const options = appState.surahs
-    .map(
-      surah =>
-        `<option value="${surah.number}">${surah.number} - ${escapeHtml(
-          surah.name
-        )}</option>`
-    )
-    .join("");
+function applySurahSearch(query) {
+  const q = normalizeArabic(query);
 
-  readerSurahSelect.innerHTML = options;
-  readerSurahSelect.value = String(appState.currentReaderSurah);
-}
-
-function getReadableReciterName(identifier) {
-  const map = {
-    "ar.alafasy": "مشاري العفاسي",
-    "ar.abdurrahmaansudais": "عبد الرحمن السديس",
-    "ar.mahermuaiqly": "ماهر المعيقلي",
-    "ar.minshawi": "محمد صديق المنشاوي",
-    "ar.husary": "محمود خليل الحصري",
-    "ar.hudhaify": "علي الحذيفي",
-    "ar.shaatree": "أبو بكر الشاطري",
-    "ar.ahmedajamy": "أحمد العجمي",
-    "ar.saoodshuraym": "سعود الشريم",
-    "ar.abdulbasitmurattal": "عبد الباسط عبد الصمد",
-    "ar.abdulbasitmujawwad": "عبد الباسط عبد الصمد مجود",
-    "ar.muhammadayyoub": "محمد أيوب",
-    "ar.muhammadjibreel": "محمد جبريل",
-    "ar.abdullahbasfar": "عبد الله بصفر",
-    "ar.yasserdossari": "ياسر الدوسري",
-    "ar.faresabbad": "فارس عباد"
-  };
-
-  return map[identifier] || identifier.replace(/^ar\./, "");
-}
-
-function sortReciters(reciters) {
-  const priorityMap = new Map(COMMON_RECITERS_PRIORITY.map((id, index) => [id, index]));
-  return [...reciters].sort((a, b) => {
-    const aIndex = priorityMap.has(a.identifier) ? priorityMap.get(a.identifier) : 9999;
-    const bIndex = priorityMap.has(b.identifier) ? priorityMap.get(b.identifier) : 9999;
-
-    if (aIndex !== bIndex) return aIndex - bIndex;
-
-    return getReadableReciterName(a.identifier).localeCompare(
-      getReadableReciterName(b.identifier),
-      "ar"
-    );
-  });
-}
-
-function populateReciters() {
-  const options = appState.reciters
-    .map(
-      reciter =>
-        `<option value="${reciter.identifier}">${escapeHtml(
-          getReadableReciterName(reciter.identifier)
-        )}</option>`
-    )
-    .join("");
-
-  reciterSelect.innerHTML = options;
-  readerReciterSelect.innerHTML = options;
-
-  if (!appState.currentReciter && appState.reciters.length) {
-    appState.currentReciter = appState.reciters[0].identifier;
+  if (!q) {
+    state.filteredSurahs = [...state.surahs];
+    renderSurahList(state.filteredSurahs);
+    return;
   }
 
-  reciterSelect.value = appState.currentReciter;
-  readerReciterSelect.value = appState.currentReciter;
+  state.filteredSurahs = [...state.surahs]
+    .map(surah => ({
+      surah,
+      score: scoreCandidate(q, `${surah.name} ${surah.id}`)
+    }))
+    .sort((a, b) => a.score - b.score)
+    .slice(0, 114)
+    .map(item => item.surah);
+
+  renderSurahList(state.filteredSurahs);
 }
 
-function buildSurahAudioUrl(reciterIdentifier, surahNumber) {
-  return `${API_BASE}/ayah/${surahNumber}:1/${reciterIdentifier}`;
+function updateNowCard() {
+  const surah = findSurahById(state.currentSurahId);
+  const reciter = state.reciters.find(r => Number(r.id) === Number(state.currentReciterId));
+
+  nowTitle.textContent = surah ? `سورة ${surah.name}` : "اختر سورة";
+  nowMeta.textContent = reciter
+    ? `القارئ: ${reciter.displayName} • السورة رقم ${state.currentSurahId}`
+    : "اختر قارئًا وسورة للبدء";
 }
 
-async function resolveSurahAudio(reciterIdentifier, surahNumber) {
-  const data = await fetchJson(buildSurahAudioUrl(reciterIdentifier, surahNumber));
-  const audioUrl = data?.data?.audio;
-  if (!audioUrl) throw new Error("No audio url");
-  return audioUrl;
-}
-
-function updatePlayerMeta() {
-  const surah = appState.surahs[appState.currentSurahIndex];
-  const reciterName = getReadableReciterName(appState.currentReciter);
-
-  surahTitle.textContent = `سورة ${surah.name}`;
-  surahMeta.textContent = `القارئ: ${reciterName} • ${surah.numberOfAyahs} آية • ${
-    surah.revelationType === "Meccan" ? "مكية" : "مدنية"
-  }`;
-}
-
-function setActiveSurahItem() {
-  document.querySelectorAll(".surah-item").forEach(item => {
-    const isActive = Number(item.dataset.surahNumber) === appState.currentSurahIndex + 1;
-    item.classList.toggle("active", isActive);
-  });
+function syncSelects() {
+  surahSelect.value = String(state.currentSurahId);
+  reciterSelect.value = String(state.currentReciterId);
+  updateNowCard();
+  renderSurahList(state.filteredSurahs.length ? state.filteredSurahs : state.surahs);
 }
 
 function updatePlayButton() {
-  playBtn.classList.toggle("is-paused", audioPlayer.paused);
+  playPauseBtn.classList.toggle("is-paused", audioPlayer.paused);
 }
 
 function updateMuteButton() {
   muteBtn.classList.toggle("is-muted", audioPlayer.muted);
 }
 
-function resetProgress() {
-  progressFill.style.width = "0%";
-  currentTimeEl.textContent = "00:00";
-  durationTimeEl.textContent = "-00:00";
+function updateRepeatButton() {
+  repeatBtn.classList.toggle("active", state.repeat);
 }
 
-async function loadCurrentSurahAudio(autoPlay = false) {
-  const surah = appState.surahs[appState.currentSurahIndex];
-  updatePlayerMeta();
-  setActiveSurahItem();
-  resetProgress();
+async function loadAndMaybePlay(autoPlay = false) {
+  const reciter = state.reciters.find(r => Number(r.id) === Number(state.currentReciterId));
+  const surah = findSurahById(state.currentSurahId);
 
-  try {
-    playBtn.disabled = true;
-    const audioUrl = await resolveSurahAudio(appState.currentReciter, surah.number);
-    audioPlayer.src = audioUrl;
-    audioPlayer.load();
+  if (!reciter || !surah) return;
 
-    if (autoPlay) {
+  const audioUrl = buildAudioUrl(reciter.server, surah.id);
+  state.currentAudioUrl = audioUrl;
+
+  audioPlayer.src = audioUrl;
+  audioPlayer.load();
+
+  setStatus(`تم اختيار ${surah.name} بصوت ${reciter.displayName}`, true);
+
+  if (autoPlay) {
+    try {
       await audioPlayer.play();
+    } catch (err) {
+      setStatus("تعذر بدء التشغيل تلقائيًا. اضغط زر التشغيل.", false);
     }
-  } catch (error) {
-    alert("تعذر تشغيل الصوت. تأكد من الاتصال بالإنترنت أو جرّب قارئًا آخر.");
-    console.error(error);
-  } finally {
-    playBtn.disabled = false;
-    updatePlayButton();
-  }
-}
-
-function setCurrentSurahByNumber(surahNumber, autoPlay = false) {
-  const index = appState.surahs.findIndex(s => s.number === surahNumber);
-  if (index === -1) return;
-  appState.currentSurahIndex = index;
-  appState.currentReaderSurah = surahNumber;
-  readerSurahSelect.value = String(surahNumber);
-  loadCurrentSurahAudio(autoPlay);
-}
-
-async function searchAyahs(query) {
-  if (!query.trim()) {
-    showMessage(ayahResults, "اكتب جزءًا من آية لبدء البحث");
-    return;
   }
 
-  showMessage(ayahResults, "جارِ البحث...");
+  setupMediaSession(reciter.displayName, surah.name);
+  updatePlayButton();
+}
+
+function setupMediaSession(reciterName, surahName) {
+  if (!("mediaSession" in navigator)) return;
+
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: `سورة ${surahName}`,
+    artist: reciterName,
+    album: "القارئ"
+  });
+
+  navigator.mediaSession.setActionHandler("play", async () => {
+    try { await audioPlayer.play(); } catch (_) {}
+  });
+
+  navigator.mediaSession.setActionHandler("pause", () => {
+    audioPlayer.pause();
+  });
+
+  navigator.mediaSession.setActionHandler("previoustrack", () => {
+    goPrev();
+  });
+
+  navigator.mediaSession.setActionHandler("nexttrack", () => {
+    goNext();
+  });
+}
+
+function goPrev() {
+  const currentIndex = state.surahs.findIndex(s => Number(s.id) === Number(state.currentSurahId));
+  const prevIndex = currentIndex <= 0 ? state.surahs.length - 1 : currentIndex - 1;
+  state.currentSurahId = Number(state.surahs[prevIndex].id);
+  syncSelects();
+  loadAndMaybePlay(true);
+}
+
+function goNext() {
+  const currentIndex = state.surahs.findIndex(s => Number(s.id) === Number(state.currentSurahId));
+  const nextIndex = currentIndex >= state.surahs.length - 1 ? 0 : currentIndex + 1;
+  state.currentSurahId = Number(state.surahs[nextIndex].id);
+  syncSelects();
+  loadAndMaybePlay(true);
+}
+
+function pickPreferredReciters(rawReciters) {
+  const usable = rawReciters
+    .map(r => {
+      const bestMoshaf = (r.moshaf || []).find(m => Number(m.surah_total) === 114 && m.server);
+      if (!bestMoshaf) return null;
+      return {
+        id: r.id,
+        rawName: r.name,
+        normalizedName: normalizeArabic(r.name),
+        server: bestMoshaf.server
+      };
+    })
+    .filter(Boolean);
+
+  const picked = [];
+  const usedIds = new Set();
+
+  for (const pref of preferredReciters) {
+    const found = usable.find(item => {
+      if (usedIds.has(item.id)) return false;
+      return pref.keys.every(k => item.normalizedName.includes(normalizeArabic(k)));
+    });
+
+    if (found) {
+      picked.push({
+        id: found.id,
+        displayName: pref.display,
+        server: found.server
+      });
+      usedIds.add(found.id);
+    }
+  }
+
+  for (const item of usable) {
+    if (picked.length >= 30) break;
+    if (usedIds.has(item.id)) continue;
+    picked.push({
+      id: item.id,
+      displayName: item.rawName,
+      server: item.server
+    });
+    usedIds.add(item.id);
+  }
+
+  return picked.slice(0, 30);
+}
+
+async function loadData() {
+  setStatus("جارِ تحميل السور والقراء...");
   try {
-    const normalized = encodeURIComponent(query.trim());
-    const data = await fetchJson(`${API_BASE}/search/${normalized}/all/ar`);
-    const matches = data?.data?.matches || [];
+    const [suwarData, recitersData] = await Promise.all([
+      getJson(SURAHS_API),
+      getJson(RECITERS_API)
+    ]);
 
-    if (!matches.length) {
-      showMessage(ayahResults, "لم يتم العثور على نتائج");
+    const suwar = suwarData.suwar || [];
+    const reciters = recitersData.reciters || [];
+
+    state.surahs = suwar.map(item => ({
+      id: Number(item.id),
+      name: item.name,
+      start_page: item.start_page || "",
+      type:
+        item.type === 1 || item.type === "1" ? "مكية" :
+        item.type === 2 || item.type === "2" ? "مدنية" :
+        ""
+    }));
+
+    state.filteredSurahs = [...state.surahs];
+    state.reciters = pickPreferredReciters(reciters);
+
+    if (!state.surahs.length) {
+      throw new Error("no surahs");
+    }
+
+    if (!state.reciters.length) {
+      throw new Error("no reciters");
+    }
+
+    state.currentSurahId = 1;
+    state.currentReciterId = state.reciters[0].id;
+
+    renderSurahOptions();
+    renderReciterOptions();
+    renderSurahList(state.surahs);
+    updateNowCard();
+    updateRepeatButton();
+    updateMuteButton();
+    updatePlayButton();
+
+    setStatus("تم تحميل السور والقراء بنجاح", true);
+  } catch (err) {
+    console.error(err);
+    setStatus("تعذر تحميل البيانات. تحقق من الإنترنت ثم حدّث الصفحة.", false);
+    surahList.innerHTML = `<div class="list-loading">تعذر تحميل السور</div>`;
+  }
+}
+
+function initEvents() {
+  themeToggle.addEventListener("click", () => {
+    setTheme(!document.body.classList.contains("dark"));
+  });
+
+  shareBtn.addEventListener("click", async () => {
+    const data = {
+      title: "القارئ | استمع إلى القرآن الكريم",
+      text: "مشغل قرآن صوتي لاختيار السورة والقارئ والاستماع بسهولة.",
+      url: window.location.href
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(data);
+      } catch (_) {}
       return;
     }
 
-    ayahResults.innerHTML = matches
-      .slice(0, 10)
-      .map(match => {
-        const highlightedText = highlightMatch(match.text, query);
-        return `
-          <div class="ayah-result">
-            <div class="ayah-result-top">
-              <div class="ayah-result-title">${escapeHtml(match.surah.name)}</div>
-              <div class="ayah-result-meta">الآية ${match.numberInSurah}</div>
-            </div>
-            <div class="ayah-result-text">${highlightedText}</div>
-          </div>
-        `;
-      })
-      .join("");
-  } catch (error) {
-    showMessage(ayahResults, "حدث خطأ أثناء البحث في الآيات", "error");
-    console.error(error);
-  }
-}
-
-function highlightMatch(text, query) {
-  const safeText = escapeHtml(text);
-  const q = query.trim();
-  if (!q) return safeText;
-
-  const normalizedQuery = normalizeArabic(q);
-  const words = normalizedQuery.split(" ").filter(Boolean).slice(0, 6);
-
-  let result = safeText;
-
-  for (const word of words) {
-    if (word.length < 2) continue;
-    const pattern = new RegExp(`(${escapeRegex(word)})`, "gi");
-    result = result.replace(pattern, `<span class="highlight">$1</span>`);
-  }
-
-  return result;
-}
-
-function escapeRegex(text) {
-  return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-async function loadReaderSurah() {
-  const surahNumber = Number(readerSurahSelect.value || 1);
-  const edition = "quran-uthmani";
-
-  appState.currentReaderSurah = surahNumber;
-  readerContent.innerHTML = `<div class="loading-box">جارِ تحميل نص السورة...</div>`;
-
-  try {
-    const data = await fetchJson(`${API_BASE}/surah/${surahNumber}/${edition}`);
-    const surahData = data?.data;
-    const ayahs = surahData?.ayahs || [];
-    appState.currentReaderAyahs = ayahs;
-
-    readerContent.innerHTML = `
-      <div class="reader-header">
-        <h3>سورة ${escapeHtml(surahData.name)}</h3>
-        <p>${ayahs.length} آية • ${surahData.revelationType === "Meccan" ? "مكية" : "مدنية"}</p>
-      </div>
-      <div class="reader-ayahs">
-        ${ayahs
-          .map(
-            ayah => `
-              <div class="reader-ayah" data-ayah-number="${ayah.numberInSurah}">
-                ${escapeHtml(ayah.text)}
-                <span class="ayah-number">${ayah.numberInSurah}</span>
-              </div>
-            `
-          )
-          .join("")}
-      </div>
-    `;
-  } catch (error) {
-    showMessage(readerContent, "تعذر تحميل السورة", "error");
-    console.error(error);
-  }
-}
-
-async function playSingleAyah(surahNumber, ayahNumber) {
-  const edition = readerReciterSelect.value || appState.currentReciter;
-  const globalAyahNumber = await getGlobalAyahNumber(surahNumber, ayahNumber);
-
-  try {
-    const data = await fetchJson(`${API_BASE}/ayah/${globalAyahNumber}/${edition}`);
-    const audioUrl = data?.data?.audio;
-    if (!audioUrl) throw new Error("No ayah audio");
-    ayahAudioPlayer.src = audioUrl;
-    ayahAudioPlayer.load();
-    await ayahAudioPlayer.play();
-  } catch (error) {
-    alert("تعذر تشغيل الآية بصوت القارئ المختار");
-    console.error(error);
-  }
-}
-
-function getGlobalAyahNumber(surahNumber, ayahNumber) {
-  let total = 0;
-  for (const surah of appState.surahs) {
-    if (surah.number < surahNumber) {
-      total += surah.numberOfAyahs;
-    }
-  }
-  return Promise.resolve(total + ayahNumber);
-}
-
-async function initializeSurahs() {
-  showMessage(surahList, "جارِ تحميل السور...");
-  try {
-    const data = await fetchJson(`${API_BASE}/surah`);
-    appState.surahs = data?.data || [];
-    renderSurahList(appState.surahs);
-    populateSurahSelects();
-    updatePlayerMeta();
-  } catch (error) {
-    showMessage(surahList, "تعذر تحميل السور", "error");
-    console.error(error);
-  }
-}
-
-async function initializeReciters() {
-  try {
-    const data = await fetchJson(`${API_BASE}/edition?format=audio&language=ar&type=versebyverse`);
-    const editions = data?.data || [];
-
-    const filtered = editions
-      .filter(item => item.identifier && item.format === "audio")
-      .filter(item => item.language === "ar")
-      .filter(item => item.type === "versebyverse");
-
-    const uniqueMap = new Map();
-    for (const item of filtered) {
-      if (!uniqueMap.has(item.identifier)) {
-        uniqueMap.set(item.identifier, item);
-      }
-    }
-
-    appState.reciters = sortReciters(Array.from(uniqueMap.values())).slice(0, 30);
-    if (!appState.reciters.length) {
-      throw new Error("No reciters found");
-    }
-
-    appState.currentReciter = appState.reciters[0].identifier;
-    populateReciters();
-  } catch (error) {
-    reciterSelect.innerHTML = `<option value="">تعذر تحميل القراء</option>`;
-    readerReciterSelect.innerHTML = `<option value="">تعذر تحميل القراء</option>`;
-    console.error(error);
-  }
-}
-
-function filterSurahs(query) {
-  const results = findClosestSurahs(query, 114);
-  renderSurahList(results);
-}
-
-function shareSite(button) {
-  const shareData = {
-    title: "القارئ | استمع إلى القرآن الكريم",
-    text: "موقع للاستماع إلى القرآن الكريم وقراءة السور والبحث في الآيات.",
-    url: window.location.href
-  };
-
-  if (navigator.share) {
-    navigator.share(shareData).catch(() => {});
-  } else if (navigator.clipboard) {
-    navigator.clipboard
-      .writeText(window.location.href)
-      .then(() => {
-        const original = button.textContent;
-        button.textContent = "تم نسخ الرابط";
-        setTimeout(() => {
-          button.textContent = original;
-        }, 1500);
-      })
-      .catch(() => {
-        alert("تعذر نسخ الرابط");
-      });
-  } else {
-    alert("المشاركة غير مدعومة على هذا الجهاز");
-  }
-}
-
-function initializeMicFeature() {
-  const SpeechRecognition =
-    window.SpeechRecognition || window.webkitSpeechRecognition;
-
-  if (!SpeechRecognition) {
-    micStatus.textContent = "ميزة الاستماع غير مدعومة في هذا المتصفح";
-    startMicBtn.disabled = true;
-    stopMicBtn.disabled = true;
-    return;
-  }
-
-  const recognition = new SpeechRecognition();
-  recognition.lang = "ar-SA";
-  recognition.interimResults = true;
-  recognition.continuous = true;
-  appState.micRecognition = recognition;
-
-  recognition.onstart = () => {
-    micStatus.textContent = "جاري الاستماع لك...";
-    micStatus.classList.add("listening");
-  };
-
-  recognition.onend = () => {
-    micStatus.classList.remove("listening");
-    micStatus.textContent = "تم إيقاف الاستماع";
-  };
-
-  recognition.onerror = () => {
-    micStatus.classList.remove("listening");
-    micStatus.textContent = "حدث خطأ أثناء الاستماع";
-  };
-
-  recognition.onresult = event => {
-    let transcript = "";
-    for (let i = event.resultIndex; i < event.results.length; i++) {
-      transcript += event.results[i][0].transcript + " ";
-    }
-
-    const cleaned = transcript.trim();
-    if (!cleaned) return;
-    micStatus.textContent = `سمعنا: ${cleaned}`;
-    tryHighlightReaderText(cleaned);
-  };
-
-  startMicBtn.addEventListener("click", () => {
     try {
-      recognition.start();
-    } catch (_) {}
-  });
-
-  stopMicBtn.addEventListener("click", () => {
-    recognition.stop();
-  });
-}
-
-function tryHighlightReaderText(spokenText) {
-  if (!appState.currentReaderAyahs.length) return;
-
-  const normalizedSpoken = normalizeArabic(spokenText);
-  if (!normalizedSpoken) return;
-
-  let bestMatch = null;
-  let bestScore = Infinity;
-
-  for (const ayah of appState.currentReaderAyahs) {
-    const score = scoreTextMatch(normalizedSpoken, ayah.text);
-    if (score < bestScore) {
-      bestScore = score;
-      bestMatch = ayah;
-    }
-  }
-
-  if (!bestMatch) return;
-
-  document.querySelectorAll(".reader-ayah").forEach(el => {
-    el.classList.toggle(
-      "active",
-      Number(el.dataset.ayahNumber) === bestMatch.numberInSurah
-    );
-  });
-}
-
-function setupAudioEvents() {
-  audioPlayer.addEventListener("timeupdate", () => {
-    if (audioPlayer.duration) {
-      const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-      progressFill.style.width = `${progress}%`;
-      currentTimeEl.textContent = formatTime(audioPlayer.currentTime);
-      durationTimeEl.textContent = `-${formatTime(audioPlayer.duration - audioPlayer.currentTime)}`;
+      await navigator.clipboard.writeText(window.location.href);
+      const old = shareBtn.textContent;
+      shareBtn.textContent = "تم نسخ الرابط";
+      setTimeout(() => {
+        shareBtn.textContent = old;
+      }, 1400);
+    } catch (_) {
+      setStatus("تعذر نسخ الرابط", false);
     }
   });
 
-  audioPlayer.addEventListener("loadedmetadata", () => {
-    currentTimeEl.textContent = "00:00";
-    durationTimeEl.textContent = `-${formatTime(audioPlayer.duration)}`;
+  reciterSelect.addEventListener("change", () => {
+    state.currentReciterId = Number(reciterSelect.value);
+    syncSelects();
+    loadAndMaybePlay(false);
   });
 
-  audioPlayer.addEventListener("ended", () => {
-    if (appState.repeatEnabled) {
-      audioPlayer.currentTime = 0;
-      audioPlayer.play().catch(() => {});
-    } else {
-      const nextIndex = (appState.currentSurahIndex + 1) % appState.surahs.length;
-      appState.currentSurahIndex = nextIndex;
-      loadCurrentSurahAudio(true);
-    }
-    updatePlayButton();
+  surahSelect.addEventListener("change", () => {
+    state.currentSurahId = Number(surahSelect.value);
+    syncSelects();
+    loadAndMaybePlay(false);
   });
 
-  audioPlayer.addEventListener("play", updatePlayButton);
-  audioPlayer.addEventListener("pause", updatePlayButton);
-}
-
-function setupEvents() {
-  themeToggle.addEventListener("click", () => {
-    setTheme(!body.classList.contains("dark"));
+  startListenBtn.addEventListener("click", () => {
+    loadAndMaybePlay(true);
   });
 
-  shareBtn.addEventListener("click", () => shareSite(shareBtn));
-  heroShareBtn.addEventListener("click", () => shareSite(heroShareBtn));
-
-  openReaderBtn.addEventListener("click", () => {
-    document.getElementById("readerSection").scrollIntoView({ behavior: "smooth" });
+  surahSearchInput.addEventListener("input", () => {
+    applySurahSearch(surahSearchInput.value);
   });
 
-  mainSearch.addEventListener("input", e => {
-    filterSurahs(e.target.value);
-    surahSearch.value = e.target.value;
+  clearSearchBtn.addEventListener("click", () => {
+    surahSearchInput.value = "";
+    applySurahSearch("");
+    surahSearchInput.focus();
   });
 
-  mainSearchBtn.addEventListener("click", () => {
-    filterSurahs(mainSearch.value);
-    document.getElementById("listen").scrollIntoView({ behavior: "smooth" });
-  });
-
-  surahSearch.addEventListener("input", e => {
-    filterSurahs(e.target.value);
-    mainSearch.value = e.target.value;
-  });
-
-  surahSearchBtn.addEventListener("click", () => {
-    filterSurahs(surahSearch.value);
-  });
-
-  surahList.addEventListener("click", e => {
+  surahList.addEventListener("click", (e) => {
     const item = e.target.closest(".surah-item");
     if (!item) return;
-    const surahNumber = Number(item.dataset.surahNumber);
-    setCurrentSurahByNumber(surahNumber, true);
+    state.currentSurahId = Number(item.dataset.id);
+    syncSelects();
+    loadAndMaybePlay(false);
   });
 
-  reciterSelect.addEventListener("change", async e => {
-    appState.currentReciter = e.target.value;
-    readerReciterSelect.value = appState.currentReciter;
-    await loadCurrentSurahAudio(false);
-  });
-
-  readerReciterSelect.addEventListener("change", e => {
-    appState.currentReciter = e.target.value;
-    reciterSelect.value = appState.currentReciter;
-  });
-
-  readerSurahSelect.addEventListener("change", e => {
-    appState.currentReaderSurah = Number(e.target.value || 1);
-  });
-
-  readerLoadBtn.addEventListener("click", loadReaderSurah);
-
-  readerContent.addEventListener("click", e => {
-    const ayahEl = e.target.closest(".reader-ayah");
-    if (!ayahEl) return;
-
-    document.querySelectorAll(".reader-ayah").forEach(el => el.classList.remove("active"));
-    ayahEl.classList.add("active");
-
-    const ayahNumber = Number(ayahEl.dataset.ayahNumber);
-    playSingleAyah(appState.currentReaderSurah, ayahNumber);
-  });
-
-  ayahSearchBtn.addEventListener("click", () => {
-    searchAyahs(ayahSearchInput.value);
-  });
-
-  ayahSearchInput.addEventListener("keydown", e => {
-    if (e.key === "Enter") {
-      searchAyahs(ayahSearchInput.value);
+  playPauseBtn.addEventListener("click", async () => {
+    if (!audioPlayer.src) {
+      await loadAndMaybePlay(true);
+      return;
     }
-  });
 
-  playBtn.addEventListener("click", async () => {
-    try {
-      if (audioPlayer.paused) {
-        if (!audioPlayer.src) {
-          await loadCurrentSurahAudio(true);
-        } else {
-          await audioPlayer.play();
-        }
-      } else {
-        audioPlayer.pause();
+    if (audioPlayer.paused) {
+      try {
+        await audioPlayer.play();
+      } catch (_) {
+        setStatus("تعذر التشغيل. جرّب مرة أخرى.", false);
       }
-    } catch (error) {
-      alert("تعذر تشغيل الصوت");
-      console.error(error);
+    } else {
+      audioPlayer.pause();
     }
   });
 
-  prevBtn.addEventListener("click", () => {
-    const prevIndex =
-      (appState.currentSurahIndex - 1 + appState.surahs.length) % appState.surahs.length;
-    appState.currentSurahIndex = prevIndex;
-    loadCurrentSurahAudio(true);
-  });
-
-  nextBtn.addEventListener("click", () => {
-    const nextIndex = (appState.currentSurahIndex + 1) % appState.surahs.length;
-    appState.currentSurahIndex = nextIndex;
-    loadCurrentSurahAudio(true);
-  });
+  prevBtn.addEventListener("click", goPrev);
+  nextBtn.addEventListener("click", goNext);
 
   repeatBtn.addEventListener("click", () => {
-    appState.repeatEnabled = !appState.repeatEnabled;
-    repeatBtn.classList.toggle("active", appState.repeatEnabled);
-    repeatBtn.style.background = appState.repeatEnabled
-      ? "linear-gradient(135deg, var(--primary), var(--primary2))"
-      : "var(--surface-2)";
-    repeatBtn.style.color = appState.repeatEnabled ? "#fff" : "var(--text)";
+    state.repeat = !state.repeat;
+    audioPlayer.loop = state.repeat;
+    updateRepeatButton();
   });
 
   muteBtn.addEventListener("click", () => {
@@ -791,50 +507,59 @@ function setupEvents() {
   });
 
   downloadBtn.addEventListener("click", () => {
-    if (!audioPlayer.src) {
-      alert("لا يوجد ملف صوتي محمل حاليًا");
+    if (!state.currentAudioUrl) {
+      setStatus("لا يوجد ملف صوتي جاهز للتحميل بعد", false);
       return;
     }
 
-    const link = document.createElement("a");
-    link.href = audioPlayer.src;
-    link.download = "";
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
+    const a = document.createElement("a");
+    a.href = state.currentAudioUrl;
+    a.download = "";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
   });
 
-  progressBar.addEventListener("click", e => {
+  progressBar.addEventListener("click", (e) => {
     if (!audioPlayer.duration) return;
-
     const rect = progressBar.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+    const x = e.clientX - rect.left;
+    const ratio = Math.max(0, Math.min(1, x / rect.width));
     audioPlayer.currentTime = ratio * audioPlayer.duration;
   });
 
-  listenModeSelect.addEventListener("change", e => {
-    const mode = e.target.value;
-    if (mode === "reader") {
-      document.getElementById("readerSection").scrollIntoView({ behavior: "smooth" });
+  audioPlayer.addEventListener("timeupdate", () => {
+    if (!audioPlayer.duration) return;
+    const ratio = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+    progressFill.style.width = `${ratio}%`;
+    currentTime.textContent = formatTime(audioPlayer.currentTime);
+    durationTime.textContent = `-${formatTime(audioPlayer.duration - audioPlayer.currentTime)}`;
+  });
+
+  audioPlayer.addEventListener("loadedmetadata", () => {
+    currentTime.textContent = "00:00";
+    durationTime.textContent = `-${formatTime(audioPlayer.duration)}`;
+  });
+
+  audioPlayer.addEventListener("play", () => {
+    updatePlayButton();
+  });
+
+  audioPlayer.addEventListener("pause", () => {
+    updatePlayButton();
+  });
+
+  audioPlayer.addEventListener("ended", () => {
+    if (!state.repeat) {
+      goNext();
     }
   });
 }
 
 async function init() {
-  initializeTheme();
-  setupAudioEvents();
-  setupEvents();
-  initializeMicFeature();
-
-  await Promise.all([initializeSurahs(), initializeReciters()]);
-
-  if (appState.surahs.length && appState.reciters.length) {
-    updatePlayerMeta();
-    renderSurahList(appState.surahs);
-    await loadCurrentSurahAudio(false);
-    await loadReaderSurah();
-  }
+  initTheme();
+  initEvents();
+  await loadData();
 }
 
 init();
